@@ -16,11 +16,16 @@
  */
 package cl.magnolabs.basket.core.game;
 
+import java.util.List;
+
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
 public class League {
-
+	
+	private String name;
+	private List<Match> games;
+	
 }

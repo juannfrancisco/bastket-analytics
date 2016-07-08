@@ -18,6 +18,7 @@ package cl.magnolabs.basket.core.game;
 
 import java.util.Date;
 
+import cl.magnolabs.basket.core.Court;
 import cl.magnolabs.basket.core.Team;
 
 /**
@@ -25,7 +26,7 @@ import cl.magnolabs.basket.core.Team;
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-public class Game {
+public class Match {
 
 	private Date date;
 	private Team visitor;
@@ -33,6 +34,8 @@ public class Game {
 	
 	private int scoreVisitor;
 	private int scoreLocal;
+	
+	private Court court;
 	
 	
 }
