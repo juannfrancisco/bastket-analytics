@@ -37,7 +37,7 @@
 	                </div>
 	               <div class="panel-body panel-collapse pull out">
 	               		<div class="row">
-	               			<div class="col-md-12"> {{team.descripcion}} </div>
+	               			<div class="col-md-12"> {{team.bio}} </div>
 	               		</div>
 	               		<hr/>
 	               		<div class="row">
@@ -48,36 +48,6 @@
 	               				<b>Equipo</b> <br/>{{team.gender}}
 	               			</div>
 	               		</div>
-	               		
-						<!-- form class="form-horizontal form-bordered" id="form-crear-equipo">
-			        		<div class="form-group">
-			                    <label class="col-sm-3 control-label">Nombre</label>
-			                    <div class="col-sm-9 control-label" style="text-align:left;">
-			                        {{equipo.nombre}}
-			                    </div>
-			                </div>
-			                
-			                <div class="form-group">
-			                    <label class="col-sm-3 control-label">Descripción</label>
-			                    <div class="col-sm-9 control-label" style="text-align:left;">
-			                        {{equipo.descripcion}}
-			                    </div>
-			                </div>
-			                
-			                <div class="form-group">
-			                    <label class="col-sm-3 control-label">Año Limite</label>
-			                    <div class="col-sm-9 control-label" style="text-align:left;">
-			                        
-			                    </div>
-			                </div>
-			                
-			                <div class="form-group">
-			                    <label class="col-sm-3 control-label">Género</label>
-			                    <div class="col-sm-9 control-label" style="text-align:left;">                           
-			                            {{equipo.genero}}
-			                    </div>
-			                </div>
-		                </form-->
 	               </div>
             </div>
         	
@@ -96,16 +66,14 @@
 		                          <span class="media-text ellipsis nm">No se han asignado jugadores al equipo.</span>		                          
 		                      </span>
 		                  	</a>
-			        		<a href="javascript:void(0);" class="media border-dotted" ng-repeat="playeers in team.playeers | filter:q as results">
+			        		<a href="javascript:void(0);" class="media border-dotted" ng-repeat="player in team.playeers | filter:q as results">
 			                      <span class="pull-left">
-			                          <img src="<%=request.getContextPath() %>/public/image/avatar/avatar6.jpg" class="media-object" alt="">
+			                          <img ng-src="<%=request.getContextPath() %>/image/avatar/{{player.image}}" class="media-object" alt="">
 			                      </span>
 			                      <span class="media-body">
-			                          <span class="media-heading">Arthur Abbott</span>
+			                          <span class="media-heading">{{player.name}}</span>
 			                          <span class="media-text ellipsis nm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</span>
-			                          <!-- meta icon -->
 			                          <span class="media-meta">2m</span>
-			                          <!--/ meta icon -->
 			                      </span>
 			                  </a>
 			              </div>

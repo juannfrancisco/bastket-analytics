@@ -40,9 +40,9 @@
 	                                </div>
 	                                
 	                                <div class="form-group">
-	                                    <label class="col-sm-3 control-label">Descripción</label>
+	                                    <label class="col-sm-3 control-label">Bio</label>
 	                                    <div class="col-sm-9">
-	                                        <textarea class="form-control" ng-model="equipo.descripcion"
+	                                        <textarea class="form-control" ng-model="equipo.bio"
 	                                        data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese una descripción" data-parsley-required></textarea>
 	                                    </div>
 	                                </div>

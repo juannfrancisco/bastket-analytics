@@ -26,6 +26,7 @@ import java.util.List;
 public class Team {
 
 	private String name;
+	private String bio;
 	private Gender gender;
 	private List<Player> players;
 	
@@ -83,6 +84,20 @@ public class Team {
 	 */
 	public void setGender(Gender gender) {
 		this.gender = gender;
+	}
+
+	/**
+	 * @return the bio
+	 */
+	public String getBio() {
+		return bio;
+	}
+
+	/**
+	 * @param bio the bio to set
+	 */
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 	
 	
