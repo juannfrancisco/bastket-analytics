@@ -14,7 +14,7 @@
                                     <i class="ico-search form-control-icon"></i>
                                 </div>
                                 <div class="input-group-btn">
-                                	<a href="inicio#/mantenedores/equipos/nuevo" class="btn btn-default">Nuevo</a>
+                                	<a href="#/team/create" class="btn btn-default">Nuevo</a>
                                     	                                        
                                 </div>
                             </div>
@@ -29,29 +29,32 @@
         
         	
         
-        	<div class="col-md-3" ng-repeat="e in equipos | filter:q as results">
-               <div class="thumbnail thumbnail-album animation animating delay fadeInLeft">
+        	<div class="col-xs-6 col-md-2" ng-repeat="e in teams | filter:q as results">
+        		<div class="thumbnail thumbnail-album animation animating  fadeInLeft">
                    <div class="media">
                        <div class="indicator"><span class="spinner"></span></div>
                        <div class="overlay">
                            <div class="toolbar">
-                               <a href="#/mantenedores/equipos/{{e.oid}}" class="btn btn-default" title="upload to collection"><i class="ico-eye"></i></a>
-                               <a href="#/mantenedores/equipos/edit/{{e.oid}}" class="btn btn-success" title="watch collection"><i class="ico-edit"></i></a>
+                               <a href="#/teams/{{e.oid}}" class="btn btn-default" title="upload to collection"><i class="ico-eye"></i></a>
+                               <a href="#/teams/edit/{{e.oid}}" class="btn btn-success" title="watch collection"><i class="ico-edit"></i></a>
                                <a href="javascript:void(0);" class="btn btn-default" ng-click="eliminar(e)"><i class="ico-remove4"></i></a>
                            </div>
                        </div>
-                       <img data-toggle="unveil" src="<%=request.getContextPath() %>/image/background/background-basketball.jpg" 
-                       		data-src="<%=request.getContextPath() %>/image/background/background-basketball.jpg" alt="Cover" width="100%" class="unveiled">
+                       <img data-toggle="unveil" ng-src="<%=request.getContextPath() %>/image/team/{{e.image}}" 
+                       	 alt="Cover" width="100%" class="unveiled">
                    </div>
                    <div class="caption">
-                       <h5 class="semibold mt0 mb5">{{e.nombre}}</h5>
+                       <h5 class="semibold mt0 mb5">{{e.name}}</h5>
                        <p class="text-muted mb5 ellipsis">
-                       	{{e.descripcion}} </br>
-                       	{{e.genero}}
+                       	<b>{{e.category}}</b> | {{e.gender}}  
                        </p>
                    </div>
                </div>
            </div>
+           
+			<div class="col-md-12" ng-if="teams.length == 0">
+      			<strong>No existen equipos, presione el boton "nuevo" para agregar un equipo...</strong>
+			</div>
            
            
            

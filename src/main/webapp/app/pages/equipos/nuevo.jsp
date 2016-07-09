@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <div class="page-header page-header-block">
             <div class="page-header-section">
-                <h4 class="title semibold">Nuevo Equipo</h4>
+                <h4 class="title semibold">Administración de Equipo</h4>
             </div>
             <div class="page-header-section">
                 <div class="toolbar">
                     <ol class="breadcrumb breadcrumb-transparent nm">
-                        <li><a href="inicio#/">Ceppi</a></li>
-                        <li><a href="inicio#/mantenedores/equipos">Equipos</a></li>
+                        <li><a href="#/">Home</a></li>
+                        <li><a href="#/teams">Equipos</a></li>
                         <li class="active">Nuevo Equipo</li>
                     </ol>
                 </div>
@@ -17,25 +17,15 @@
         <div class="row">
        		<div class="col-md-12">
 	        
-	    		<div class="panel panel-default" id="toolbar-showcase">
+	    			<div class="panel panel-default" id="toolbar-showcase">
 	                <div class="panel-heading">
 	                    <h3 class="panel-title"><span class="panel-icon mr5"><i class="ico-plus"></i></span> Nuevo Equipo</h3>
 	                </div>
 	                
               
 	               <div class="panel-body panel-collapse pull out">
+	               		
 	               		<div class="row">
-	               			<div class="col-md-6">
-	               			
-	               				<section class="jumbotron jumbotron-bg10" data-stellar-background-ratio="0.4" style="min-height:320px;">
-	               					<div class="pattern pattern2 overlay overlay-primary"></div>
-	               					<div class="container" style="padding-top:8%;">
-				                        <h1 class="thin text-white text-center font-alt">Nuevo equipo.</h1>
-				                        <h4 class="thin text-white text-center">El talento gana juegos, pero el trabajo de equipo y la inteligencia ganan campeonatos</h4>				                        
-				                    </div>
-	               				</section>
-	               				
-		        			</div>
 		        			<div class="col-md-6" style="border-right:1px solid #e0e7e8;">
 		        				<form class="form-horizontal form-bordered" id="form-crear-equipo">
 		        					<h4 class="text-primary mt0">Información Básica</h4>
@@ -58,10 +48,17 @@
 	                                </div>
 	                                
 	                                <div class="form-group">
-	                                    <label class="col-sm-3 control-label">Año Limite</label>
+	                                    <label class="col-sm-3 control-label">Categoria</label>
 	                                    <div class="col-sm-9">
-	                                        <input type="number" class="form-control" ng-model="equipo.anioLimite"
-	                                        data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese el Año limite del equipo" data-parsley-required>
+	                                        <select class="form-control" ng-model="equipo.category" 
+	                                        data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese una descripción" data-parsley-required>
+	                                        		<option value="0">Seleccione una categoria</option>
+	                                        		<option value="CADET">Cadete</option>
+	                                        		<option value="JUVENILE">Juvenil</option>
+	                                        		<option value="ADULT">Adulto</option>
+	                                        		<option value="SENIOR">Senior</option>
+	                                        		
+	                                        </select>
 	                                    </div>
 	                                </div>
 	                                
@@ -80,15 +77,25 @@
 		        				</form>
 		        			</div>
 		        			
+		        			<div class="col-md-6">
+               				<section class="jumbotron jumbotron-bg10" data-stellar-background-ratio="0.4" style="min-height:320px;">
+               					<div class="pattern pattern2 overlay overlay-primary"></div>
+               					<div class="container" style="padding-top:8%;">
+			                        <h1 class="thin text-white text-center font-alt">Nuevo equipo.</h1>
+			                        <h4 class="thin text-white text-center">El talento gana juegos, pero el trabajo de equipo y la inteligencia ganan campeonatos</h4>				                        
+			                    </div>
+               				</section>
+		        			</div>
 		        		</div>
+	               		
+	               		
 		        		<div class="row" style="border-top:1px solid #e0e7e8;">
 		        			<div class="col-md-12 text-right pt5 pb0">
-		        				<button class="btn btn-success mb5 mb5"  value="button" ng-click="guardar()">Guardar <i class="ico-save"></i></button>
+		        				<button class="btn btn-success mb5 mb5"  value="button" ng-click="guardar()">Guardar</button>
 		        			</div>
 		        		</div>
 	               </div>   
                 </div> 
-	        
 	        
 	        </div>        
         </div>

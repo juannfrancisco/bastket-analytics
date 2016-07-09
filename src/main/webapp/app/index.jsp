@@ -5,9 +5,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>CEPPI - backend</title>
+        <title>Basketball Analytics</title>
         <meta name="author" content="Maldonado León">
-        <meta name="description" content="Portal de administracion ceppi">
+        <meta name="description" content="Portal de administracion">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=request.getContextPath() %>/image/touch/apple-touch-icon-144x144-precomposed.png">
@@ -62,6 +62,7 @@
         <script type="text/javascript" src="<%=request.getContextPath() %>/plugins/gritter/js/jquery.gritter.js"></script>
         
         <script type="text/javascript" src="<%=request.getContextPath() %>/js/Application.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath() %>/js/TeamController.js"></script>
         
     </body>
     <!--/ END Body -->

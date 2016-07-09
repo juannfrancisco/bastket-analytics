@@ -8,7 +8,7 @@ var app = angular.module('App', ['ngRoute']).config(function($routeProvider, $co
     	templateUrl:  CONSTANTS.contextPath + '/app/inicio.jsp' 	
     })
     
-    .when('/teams',{controller:'EquipoController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/equipos.jsp'})
+    .when('/teams',{controller:'TeamController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/equipos.jsp'})
     .when('/team/create',{controller:'CrearEquipoController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/nuevo.jsp'})
     .when('/team/:id',{controller:'PerfilEquipoController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/perfil.jsp'})
     .when('/team/edit/:id',{controller:'EditarEquipoController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/editar.jsp'})
