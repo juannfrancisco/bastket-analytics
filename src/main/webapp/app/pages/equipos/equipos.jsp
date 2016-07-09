@@ -35,8 +35,8 @@
                        <div class="indicator"><span class="spinner"></span></div>
                        <div class="overlay">
                            <div class="toolbar">
-                               <a href="#/teams/{{e.oid}}" class="btn btn-default" title="upload to collection"><i class="ico-eye"></i></a>
-                               <a href="#/teams/edit/{{e.oid}}" class="btn btn-success" title="watch collection"><i class="ico-edit"></i></a>
+                               <a href="#/team/{{e.oid}}" class="btn btn-default" title="upload to collection"><i class="ico-eye"></i></a>
+                               <a href="#/team/edit/{{e.oid}}" class="btn btn-success" title="watch collection"><i class="ico-edit"></i></a>
                                <a href="javascript:void(0);" class="btn btn-default" ng-click="eliminar(e)"><i class="ico-remove4"></i></a>
                            </div>
                        </div>

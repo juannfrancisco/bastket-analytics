@@ -10,7 +10,7 @@ var app = angular.module('App', ['ngRoute']).config(function($routeProvider, $co
     
     .when('/teams',{controller:'TeamController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/equipos.jsp'})
     .when('/team/create',{controller:'CrearEquipoController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/nuevo.jsp'})
-    .when('/team/:id',{controller:'PerfilEquipoController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/perfil.jsp'})
+    .when('/team/:id',{controller:'TeamProfileController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/perfil.jsp'})
     .when('/team/edit/:id',{controller:'EditarEquipoController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/editar.jsp'})
     
     .when('/administracion/usuarios',{controller:'UsuarioController',templateUrl:  CONSTANTS.contextPath + '/app/pages/administracion/usuarios/usuarios.jsp'})

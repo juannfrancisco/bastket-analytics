@@ -63,6 +63,7 @@
         
         <script type="text/javascript" src="<%=request.getContextPath() %>/js/Application.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath() %>/js/TeamController.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath() %>/js/TeamProfileController.js"></script>
         
     </body>
     <!--/ END Body -->
