@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="<%=request.getContextPath() %>/plugins/steps/css/jquery-steps.css">
         <link rel="stylesheet" href="<%=request.getContextPath() %>/font-awesome/css/font-awesome.css">
         <link rel="stylesheet" href="<%=request.getContextPath() %>/plugins/gritter/css/gritter.css">
+        <link rel="stylesheet" href="<%=request.getContextPath() %>/stylesheet/custom-app.css">
         <script type="text/javascript" src="<%=request.getContextPath() %>/plugins/modernizr/js/modernizr.js"></script>
     </head>
     
@@ -33,7 +34,7 @@
   		<jsp:include page="commons/menu.jsp" />
 
         <section id="main" role="main" >
-        	<div ng-view></div>
+        		<div ng-view></div>
             <a href="javascript:void();" class="totop animation" data-toggle="waypoints totop" data-showanim="bounceIn" data-hideanim="bounceOut" data-offset="50%"><i class="ico-angle-up"></i></a>
         </section>
         <script type="text/javascript">
@@ -62,8 +63,10 @@
         <script type="text/javascript" src="<%=request.getContextPath() %>/plugins/gritter/js/jquery.gritter.js"></script>
         
         <script type="text/javascript" src="<%=request.getContextPath() %>/js/Application.js"></script>
-        <script type="text/javascript" src="<%=request.getContextPath() %>/js/TeamController.js"></script>
-        <script type="text/javascript" src="<%=request.getContextPath() %>/js/TeamProfileController.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath() %>/js/controladores/TeamController.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath() %>/js/controladores/TeamProfileController.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath() %>/js/controladores/TeamEditController.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath() %>/js/controladores/TeamCreateController.js"></script>
         
     </body>
     <!--/ END Body -->

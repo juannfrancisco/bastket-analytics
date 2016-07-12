@@ -13420,6 +13420,136 @@ a.list-group-item:focus {
   color: #b1c2c6;
   border-radius: 50%;
 }
+
+
+
+
+
+
+
+/* ----------------------------
+ *
+ * Media list- Playeer
+ *
+ * --------------------------- */
+.media-list-player > .media {
+  overflow: auto;
+  position: relative;
+  padding: 10px 0px;
+  border-bottom: 1px solid #dde4e6;
+}
+.media-list-player > .media + .media {
+  margin-top: 0px;
+}
+.media-list-player > a.media {
+  display: block;
+}
+.media-list-player > a.media:active {
+  background-color: #eeeeee;
+}
+.media-list-player > a.media:hover,
+.media-list-player > a.media:focus {
+  background-color: rgba(238, 238, 238, 0.15);
+  outline: 0;
+}
+.media-list-player > .media:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 75px;
+  right: 0px;
+  height: 1px;
+}
+.media-list-player > .media:last-child:after {
+  border-bottom-width: 0px;
+}
+/* border variation */
+.media-list-player > .media.border-dotted:after {
+  border-bottom-style: dotted;
+}
+.media-list-player > .media.no-border:after {
+  border-bottom-width: 0px;
+}
+/*
+ * Media body
+ */
+.media-list-player .media-body {
+  display: block;
+  overflow: hidden;
+  zoom: 1;
+}
+/* media heading */
+.media-list-player > .media > .media-body > .media-heading {
+  display: block;
+  font-weight: 600;
+  color: #00b6ad;
+  margin-bottom: 0px;
+}
+/* media text */
+.media-list-player > .media > .media-body > .media-text {
+  display: block;
+  color: #444444;
+  margin: 0px;
+}
+/* media meta */
+.media-list-player > .media > .media-body .media-meta {
+  font-size: 11px;
+  margin: 0px;
+}
+.media-list-player > .media > .media-body span.media-meta,
+.media-list-player > .media > .media-body p.media-meta,
+.media-list-player > .media > .media-body small.media-meta {
+  color: #777777;
+}
+.media-list-player > .media > .media-body span.media-meta + span.media-meta {
+  margin-left: 3px;
+}
+/* Media status - read */
+.media-list-player > .media.read > .media-body > .media-heading,
+.media-list-player > .media.read > .media-body > .media-text,
+.media-list-player > .media.read > .media-body span.media-meta,
+.media-list-player > .media.read > .media-body p.media-meta,
+.media-list-player > .media.read > .media-body small.media-meta {
+  color: #aaaaaa;
+}
+/*
+ * Media object
+ */
+.media-list-player > .media .media-object {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+.media-list-player > .media .media-object.pull-left {
+  padding-right: 0;
+  margin-right: 10px;
+}
+.media-list-player > .media .media-object.pull-right {
+  padding-left: 0;
+  margin-left: 10px;
+}
+/* image */
+.media-list-player > .media .media-object > img {
+  max-width: 100%;
+}
+/* icon */
+.media-list-player > .media .media-object > [class*=" ico-"],
+.media-list-player > .media .media-object > [class^="ico-"] {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin: 0px auto;
+  line-height: 33px;
+  text-align: center;
+  background-color: #ecf0f1;
+  color: #b1c2c6;
+  border-radius: 50%;
+}
+
+
+
+
+
 /* 
  * Media list feed
 ----------------------------------------------------------------------------- */

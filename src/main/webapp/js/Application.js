@@ -5,13 +5,13 @@ var app = angular.module('App', ['ngRoute']).config(function($routeProvider, $co
     .when('/', 
     {
     	controller:'DashboardController',
-    	templateUrl:  CONSTANTS.contextPath + '/app/inicio.jsp' 	
+    	templateUrl:  CONSTANTS.contextPath + '/app/inicio.html' 	
     })
     
-    .when('/teams',{controller:'TeamController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/equipos.jsp'})
-    .when('/team/create',{controller:'CrearEquipoController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/nuevo.jsp'})
-    .when('/team/:id',{controller:'TeamProfileController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/perfil.jsp'})
-    .when('/team/edit/:id',{controller:'EditarEquipoController',templateUrl:  CONSTANTS.contextPath + '/app/pages/equipos/editar.jsp'})
+    .when('/teams',{controller:'TeamController',templateUrl:  CONSTANTS.contextPath + '/app/pages/teams/teams.html'})
+    .when('/team/create',{controller:'TeamCreateController',templateUrl:  CONSTANTS.contextPath + '/app/pages/teams/team-create.html'})
+    .when('/team/:id',{controller:'TeamProfileController',templateUrl:  CONSTANTS.contextPath + '/app/pages/teams/team-profile.html'})
+    .when('/team/edit/:id',{controller:'TeamEditController',templateUrl:  CONSTANTS.contextPath + '/app/pages/teams/team-edit.html'})
     
     .when('/administracion/usuarios',{controller:'UsuarioController',templateUrl:  CONSTANTS.contextPath + '/app/pages/administracion/usuarios/usuarios.jsp'})
     .otherwise(

@@ -33,14 +33,14 @@
         		<div class="thumbnail thumbnail-album animation animating  fadeInLeft">
                    <div class="media">
                        <div class="indicator"><span class="spinner"></span></div>
-                       <div class="overlay">
+                      	<div class="overlay hidden-xs hidden-sm">
                            <div class="toolbar">
                                <a href="#/team/{{e.oid}}" class="btn btn-default" title="upload to collection"><i class="ico-eye"></i></a>
                                <a href="#/team/edit/{{e.oid}}" class="btn btn-success" title="watch collection"><i class="ico-edit"></i></a>
                                <a href="javascript:void(0);" class="btn btn-default" ng-click="eliminar(e)"><i class="ico-remove4"></i></a>
                            </div>
                        </div>
-                       <img data-toggle="unveil" ng-src="<%=request.getContextPath() %>/image/team/{{e.image}}" 
+                       <img data-toggle="unveil" ng-src="../image/team/{{e.image}}" 
                        	 alt="Cover" width="100%" class="unveiled">
                    </div>
                    <div class="caption">

@@ -3,16 +3,13 @@
     
     	
 		<section class="jumbotron jumbotron-bg11 mt-15 mb15 mr-15 ml-15" data-stellar-background-ratio="0.4" 
-		style="min-height: 320px; background-position: 50% 30px; background-image: url('<%=request.getContextPath() %>/image/stellar/background-bulls.jpg') !important; ">
+		style="min-height: 320px; background-position: 50% 30px; background-image: url('../image/stellar/background-bulls.jpg') !important; ">
 		    <div class="overlay pattern pattern10"></div>
 		    <div class="container" style="padding-top:8%;">
 		        <h1 class="thin text-white text-center font-alt">{{team.name}}</h1>
 		        <h4 class="thin text-white text-center">Cantidad de jugadores {{team.playeers.length}}</h4>
 		    </div>
 		</section>
-    
-    
-    
     
     
         <div class="page-header page-header-block">
@@ -33,7 +30,7 @@
         	<div class="col-md-6">
         		<div class="panel panel-default" id="toolbar-showcase">
 	                <div class="panel-heading">
-	                    <h3 class="panel-title"><span class="panel-icon mr5"><i class="ico-list22"></i></span> Información</h3>
+	                    <h3 class="panel-title"><span class="panel-icon mr5"><i class="ico-list22"></i></span> InformaciÃ³n</h3>
 	                </div>
 	               <div class="panel-body panel-collapse pull out">
 	               		<div class="row">
@@ -41,13 +38,32 @@
 	               		</div>
 	               		<hr/>
 	               		<div class="row">
-	               			<div class="col-md-6">
-	               				<b>Año limite</b> <br/>{{team.anioLimite}} 
-	               			</div>
-	               			<div class="col-md-6">
-	               				<b>Equipo</b> <br/>{{team.gender}}
+	               			<div class="col-xs-6 col-md-6">
+	               				<b>{{team.category}}</b>
+	               				{{team.gender}}
 	               			</div>
 	               		</div>
+	               </div>
+            </div>
+            
+            
+            
+            <div class="panel panel-default" id="toolbar-showcase">
+	                <div class="panel-heading">
+	                    <h3 class="panel-title"><span class="panel-icon mr5"><i class="ico-list22"></i></span> Coach</h3>
+	                </div>
+	               <div class="panel-body panel-collapse pull out" style="padding:0px;">
+	               		<div class="media-list">
+							<a href="javascript:void(0);" class="media border-dotted">
+		                      <span class="pull-left">
+		                          <img ng-src="../image/avatar/{{team.coach.image}}" class="media-object" alt="">
+		                      </span>
+		                      <span class="media-body">
+		                          <span class="media-heading">{{team.coach.name}} {{team.coach.lastName}}</span>
+		                          <span class="media-text ellipsis nm">{{team.coach.birthdate}}</span>
+		                      </span>
+		                  </a>
+	                  	</div>
 	               </div>
             </div>
         	
@@ -60,23 +76,23 @@
 	                    <h3 class="panel-title"><span class="panel-icon mr5"><i class="ico-list22"></i></span> Jugadores</h3>
 	                </div>
 	                <div class="panel-body panel-collapse pull out" style="padding:0px;">
-        				<div class="media-list">
+	        				<div class="media-list">
 							<a href="javascript:void(0);" class="media border-dotted" ng-show="team.playeers.length==0">		                      
 		                      <span class="media-body">
 		                          <span class="media-text ellipsis nm">No se han asignado jugadores al equipo.</span>		                          
 		                      </span>
 		                  	</a>
-			        		<a href="javascript:void(0);" class="media border-dotted" ng-repeat="player in team.playeers | filter:q as results">
-			                      <span class="pull-left">
-			                          <img ng-src="<%=request.getContextPath() %>/image/avatar/{{player.image}}" class="media-object" alt="">
-			                      </span>
-			                      <span class="media-body">
-			                          <span class="media-heading">{{player.name}}</span>
-			                          <span class="media-text ellipsis nm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</span>
-			                          <span class="media-meta">2m</span>
-			                      </span>
-			                  </a>
-			              </div>
+				        		<a href="javascript:void(0);" class="media" ng-repeat="player in team.playeers | filter:q as results">
+		                      <span class="pull-left">
+		                          <img ng-src="../image/avatar/{{player.image}}" class="media-object" alt="">
+		                      </span>
+		                      <span class="media-body">
+		                          <span class="media-heading">{{player.name}} {{player.lastName}}</span>
+		                          <span class="media-text ellipsis nm">{{player.position}}</span>
+		                          <span class="media-meta">{{player.number}}</span>
+		                      </span>
+		                  </a>
+		              </div>
         			</div>
         		</div>
 

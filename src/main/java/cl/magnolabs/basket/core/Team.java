@@ -29,6 +29,7 @@ public class Team {
 	private String bio;
 	private Gender gender;
 	private List<Player> players;
+	private Coach coach;
 	
 	
 	/**
@@ -98,6 +99,20 @@ public class Team {
 	 */
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+
+	/**
+	 * @return the coach
+	 */
+	public Coach getCoach() {
+		return coach;
+	}
+
+	/**
+	 * @param coach the coach to set
+	 */
+	public void setCoach(Coach coach) {
+		this.coach = coach;
 	}
 	
 	
