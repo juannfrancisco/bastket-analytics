@@ -28,7 +28,11 @@ var app = angular.module('App', ['ngRoute']).config(function($routeProvider, $co
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador PerfilEquipoController
  *************************************************************/
-app.controller("DashboardController", function($scope, $http)
+app.controller("DashboardController", function($scope, $http, $location)
 {
-
+	
+	$scope.ref = function( link ){
+		$location.url( link );
+	};
+	
 });
