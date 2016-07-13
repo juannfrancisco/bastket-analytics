@@ -25,7 +25,10 @@
         <link rel="stylesheet" href="<%=request.getContextPath() %>/font-awesome/css/font-awesome.css">
         <link rel="stylesheet" href="<%=request.getContextPath() %>/plugins/gritter/css/gritter.css">
         <link rel="stylesheet" href="<%=request.getContextPath() %>/stylesheet/custom-app.css">
+        <link rel="stylesheet" href="../stylesheet/themes/layouts/fixed-header.css">
         <script type="text/javascript" src="<%=request.getContextPath() %>/plugins/modernizr/js/modernizr.js"></script>
+        
+        
     </head>
     
     <body>
@@ -34,7 +37,7 @@
   		<jsp:include page="commons/menu.jsp" />
 
         <section id="main" role="main" >
-        		<div ng-view></div>
+        		<div class="container-fluid" ng-view></div>
             <a href="javascript:void();" class="totop animation" data-toggle="waypoints totop" data-showanim="bounceIn" data-hideanim="bounceOut" data-offset="50%"><i class="ico-angle-up"></i></a>
         </section>
         <script type="text/javascript">
