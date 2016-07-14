@@ -13,7 +13,7 @@ html body {
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   min-height: 100%;
-  background-color: #ecf0f1;
+  background-color: white; /**#ecf0f1;*/
   overflow-x: hidden;
 }
 html.frontend body {
@@ -67,7 +67,7 @@ html.frontend body {
 }
 #header.navbar .navbar-header {
   background-color: #00b6ad;
-  height: 50px;
+  height: 60px;
   float: none;
 }
 #header.navbar .navbar-header > .navbar-brand {
@@ -75,7 +75,7 @@ html.frontend body {
   width: 100%;
   padding: 0 15px;
   line-height: 50px;
-  height: 50px;
+  height: 60px;
   text-align: center;
 }
 #header.navbar .navbar-header > .navbar-brand.text-left {
@@ -127,8 +127,8 @@ html.frontend body {
 }
 #header.navbar .navbar-toolbar .navbar-nav > li > a {
   padding: 0 15px;
-  height: 50px;
-  line-height: 50px;
+  height: 60px;
+  line-height: 60px;
   color: #9d9d9d;
   text-shadow: none;
 }

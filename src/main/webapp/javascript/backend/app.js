@@ -15,6 +15,9 @@
     }
 }(function () {
 
+	
+	$(".topmenu>li>ul>li").click( function(){ $("#btn-sidebar").trigger( "click" ); } );
+	
     var APP = {
         // Core init
         // NOTE: init at html element
