@@ -2,7 +2,7 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador PerfilEquipoController
  *************************************************************/
-app.controller("TeamProfileController", function($scope, $http)
+app.controller("TeamProfileController", function($scope, $http, $routeParams)
 {
 	
 	var coach = { name:'Fred', lastName:'Hoiberg', birthdate:'12 de Enero 1989' };
@@ -17,4 +17,31 @@ app.controller("TeamProfileController", function($scope, $http)
 	var player8 = {oid:1, name:'Scottie', lastName:'Pipen', number:33, position:'POWER_FORWARD', image:'pipen.jpg'};
 	$scope.team = {oid:1, name:"Chicago Bulls", bio:bio,gender:'MALE', description:'', category:'ADULT', image:'cbulls.png', 
 			playeers:[player1,player2,player3,player4,player5,player6,player7,player8], coach:coach};
+	
+	
+	
+	
+	$scope.loadData = function(  )
+	{
+		$scope.flagLoading = true;
+		
+		var request = 
+		$http.get( CONSTANTS.contextPath + "/services/teams/" + $routeParams.id );
+		request.success( function( response )
+		{
+			$scope.team = response;
+			$scope.flagLoading = false;
+		} );
+		request.error( function( error )
+		{
+			alert( error );
+			$scope.flagLoading = false;
+		});
+	};
+	
+	
+	$scope.loadData();
+	
+	
+	
 });

@@ -2,12 +2,28 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador PerfilEquipoController
  *************************************************************/
-app.controller("TeamCreateController", function($scope, $http)
+app.controller("TeamCreateController", function( $scope, $http, $location)
 {
-	$scope.teams = [];
+	$scope.team = {};
 	
-	$scope.teams.push( {oid:1,name:"Chicago Bulls", gender:'MALE', description:'', category:'ADULT', image:'cbulls.png'} );
-	$scope.teams.push( {oid:1,name:"Boston Celtics", gender:'MALE', description:'', category:'ADULT', image:'bos.png'} );
-	$scope.teams.push( {oid:1,name:"Boston Celtics", gender:'MALE', description:'', category:'ADULT', image:'bos.png'} );
-	$scope.teams.push( {oid:1,name:"Chicago Bulls", gender:'MALE', description:'', category:'ADULT', image:'cbulls.png'} );
+	
+	$scope.save = function(){
+		
+		var request = $http.put( CONSTANTS.contextPath + "/services/teams", $scope.team );
+		request.success( function( response )
+		{
+			console.log( response );
+//			NProgress.done();
+			$location.path('/teams');
+		} );
+		request.error( function( error )
+		{
+			console.log(error);
+			$scope.errorMsg= "Ocurrio un error al ingresar el equipo, intente más tarde";
+			$scope.diplayError = true;
+//			NProgress.done();
+			
+		});
+	};
+	
 });

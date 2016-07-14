@@ -17,10 +17,12 @@
 package cl.magnolabs.basket.rest;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -41,9 +43,24 @@ public class TeamRest {
 		return DataSingleton.getInstance().getTeams();
 	}
 	
+	@GET
+	@Path( "/{oid}" )
+	@Produces( MediaType.APPLICATION_JSON )
+	public Team findById( @PathParam("oid") String oid ){
+		Team team = new Team(oid);
+		for(Team t : DataSingleton.getInstance().getTeams() ){
+			if(t.equals( team) )
+				return t;
+		}
+		return null;
+	}
+	
+	
+	
 	@PUT
 	@Produces( MediaType.APPLICATION_JSON )
 	public void addTeam(Team team){
+		team.setOid(UUID.randomUUID().toString());
 		DataSingleton.getInstance().getTeams().add(team);
 	}
 

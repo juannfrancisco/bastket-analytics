@@ -31,6 +31,7 @@ public class Team {
 	private Gender gender;
 	private List<Player> players;
 	private Coach coach;
+	private TeamCategory category;
 	
 	
 	/**
@@ -40,6 +41,11 @@ public class Team {
 		this.name ="";
 		this.players = null;
 	}
+	
+	public Team(String oid) {
+		this.oid = oid;
+	}
+	
 	
 	/**
 	 * @param name
@@ -128,6 +134,29 @@ public class Team {
 	 */
 	public void setCoach(Coach coach) {
 		this.coach = coach;
+	}
+
+	/**
+	 * @return the category
+	 */
+	public TeamCategory getCategory() {
+		return category;
+	}
+
+	/**
+	 * @param category the category to set
+	 */
+	public void setCategory(TeamCategory category) {
+		this.category = category;
+	}
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		if( obj instanceof Team ){
+			return ((Team)obj).getOid().equals( this.getOid() );
+		}
+		return super.equals(obj);
 	}
 	
 	
