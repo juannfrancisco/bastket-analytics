@@ -25,6 +25,7 @@ import java.util.List;
  */
 public class Team {
 
+	private String oid;
 	private String name;
 	private String bio;
 	private Gender gender;
@@ -48,6 +49,20 @@ public class Team {
 		this.name = name;
 		this.players = players;
 	}
+	/**
+	 * @return the oid
+	 */
+	public String getOid() {
+		return oid;
+	}
+
+	/**
+	 * @param oid the oid to set
+	 */
+	public void setOid(String oid) {
+		this.oid = oid;
+	}
+
 	/**
 	 * @return the name
 	 */
