@@ -1952,6 +1952,18 @@ fieldset[disabled] .btn-twitter.active {
   background-color: #2a2a2a;
   color: #ffffff;
 }
+
+
+.badge-number-player{
+    background-color: #6bccb4;
+    border-radius: 0px;
+    font-size: 15px;
+    padding: 10px;
+    line-height: 15px;
+    height: 36px;
+    min-width: 36px;
+}
+
 /* ----------------------------
 *
 * Icons
@@ -13248,6 +13260,10 @@ a.thumbnail.active {
 .list-group-item {
   border-color: #ecf0f1;
 }
+
+.list-group-item > span.avatar > img{
+	width: 40px; height: 40px;
+}
 a.list-group-item.active,
 a.list-group-item.active:hover,
 a.list-group-item.active:focus {
@@ -15130,3 +15146,14 @@ hr {
     padding-left: 30px;
   }
 }
+
+.mh100{min-height: 100px;}
+.mh200{min-height: 200px;}
+.mh300{min-height: 300px;}
+.mh400{min-height: 400px;}
+.mh500{min-height: 500px;}
+
+.sq-icon50{ width:50px; height:50px; font-size: 20px; text-align: center; padding:10px; }
+.sq-icon50.danger{ background-color: #ed5466; color:white; }
+.sq-icon50.info{ background-color: #63d3e9; color:white; }
+.sq-icon100{ width: 100px; height: 100px; }

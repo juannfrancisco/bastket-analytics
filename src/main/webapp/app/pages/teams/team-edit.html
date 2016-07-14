@@ -1,4 +1,23 @@
-        <div class="page-header page-header-block">
+<div ng-show="!flagLoading && !flagErrorLoading" >
+
+	<section class="jumbotron jumbotron-bg11 mt-15 mb15 mr-15 ml-15" data-stellar-background-ratio="0.4" 
+		style="min-height: 320px; background-position: 50% 30px; background-image: url('../image/stellar/background8.jpg') !important; ">
+		    <div class="overlay pattern pattern10"></div>
+		    <div class="container" style="padding-top:8%;">
+		        <div style="margin: auto; width: 150px;">
+		        		<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" 
+                       	 alt="Cover" width="150px" class="unveiled img-rounded" ></div>
+                       	 
+                <h1 class="thin text-white text-center font-alt">{{team.name}}</h1>
+		        <h4 class="thin text-white text-center">Cantidad de jugadores {{team.playeers.length}}</h4>
+		        
+		     
+		        
+		    </div>
+	</section>
+
+
+	<div class="page-header page-header-block mb0">
             <div class="page-header-section">
                 <h4 class="title semibold">Editar Equipo</h4>
             </div>
@@ -12,114 +31,124 @@
                     </ol>
                 </div>
             </div>
-        </div>
+    </div>
+        
+        
         
         <div class="row" >
-        	<div class="col-md-6">
-        	
-        		<div class="panel panel-default" id="toolbar-showcase">
-	                <div class="panel-heading">
-	                    <h3 class="panel-title"><span class="panel-icon mr5"><i class="ico-list22"></i></span> Informaci�n</h3>
-	                </div>
-	               <div class="panel-body panel-collapse pull out" style="padding-top:0px;">
-		        		<form class="form-horizontal form-bordered" id="form-editar-equipo">
-		        		<div class="form-group">
-		                    <label class="col-sm-3 control-label">Nombre</label>
-		                    <div class="col-sm-9">
-		                        <input type="text" class="form-control" ng-model="team.name"
-		                        data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese el nombre del equipo" data-parsley-required>
-		                    </div>
-		                </div>
-		                
-		                <div class="form-group">
-		                    <label class="col-sm-3 control-label">Bio</label>
-		                    <div class="col-sm-9">
-		                        <textarea class="form-control" ng-model="team.bio"
-		                        data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese una descripci�n" data-parsley-required></textarea>
-		                    </div>
-		                </div>
-		                
-		                <div class="form-group">
-		                    <label class="col-sm-3 control-label">Categoria</label>
-		                    <div class="col-sm-9">
-                                <select class="form-control" ng-model="equipo.category" 
-                                data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese una descripci�n" data-parsley-required>
-                                		<option value="0">Seleccione una categoria</option>
-                                		<option value="CADET">Cadete</option>
-                                		<option value="JUVENILE">Juvenil</option>
-                                		<option value="ADULT">Adulto</option>
-                                		<option value="SENIOR">Senior</option>
-                                		
-                                </select>
-                            </div>
-		                </div>
-		                
-		                <div class="form-group">
-		                    <label class="col-sm-3 control-label">G�nero</label>
-		                    <div class="col-sm-9">
-		                           <div class="btn-group">
-		                            <button type="button" class="btn btn-default {{button.male}}"   ng-click="equipo.genero='MASCULINO';button.male='btn-primary';button.female='';"  >Masculino</button>	                                            
-		                            <button type="button" class="btn btn-default {{button.female}}" ng-click="equipo.genero='FEMENINO';button.female='btn-primary';button.male='';">Femenino</button>
-		                        </div>
-		                       </div>
-		                </div>
-		                	<div class="form-group">
-		                		<div class="col-md-12 text-right pt5 pb0">
-			        				<a href="#/mantenedores/equipos/{{equipo.oid}}" class="btn btn-default">Cancelar</a>
-			        				<button class="btn btn-success btn-lg"  value="button"  ng-click="actualizar()">Guardar</button>
-			        			</div>
-		                	</div>
+        		 <ul class="nav nav-tabs nav-justified">
+				<li role="presentation" class="active">
+					<a data-toggle="tab" aria-expanded="true" data-target="#info" >Info</a></li>
+				<li role="presentation">
+					<a data-toggle="tab" aria-expanded="true" data-target="#players">Jugadores</a></li>
+				<li role="presentation">
+					<a data-toggle="tab" aria-expanded="true" data-target="#staff">Staff</a></li>
+			</ul>
+			
+			<div class="tab-content panel" >
+				
+				<div class="tab-pane np pt15 pb15 mh400 active" id="info" >
+				
+					<form class="form-horizontal form-bordered pr15 pl15" id="form-editar-equipo">
+			        		<div class="form-group">
+			                    <label class="col-sm-3 control-label">Nombre</label>
+			                    <div class="col-sm-9">
+			                        <input type="text" class="form-control" ng-model="team.name"
+			                        data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese el nombre del equipo" data-parsley-required>
+			                    </div>
+			                </div>
+			                
+			                <div class="form-group">
+			                    <label class="col-sm-3 control-label">Bio</label>
+			                    <div class="col-sm-9">
+			                        <textarea class="form-control" ng-model="team.bio"
+			                        data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese una descripcion" data-parsley-required></textarea>
+			                    </div>
+			                </div>
+			                
+			                <div class="form-group">
+			                    <label class="col-sm-3 control-label">Categoria</label>
+			                    <div class="col-sm-9">
+	                                <select class="form-control" ng-model="team.category" 
+	                                data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese una descripcion" data-parsley-required>
+	                                		<option value="0">Seleccione una categoria</option>
+	                                		<option value="CADET">Cadete</option>
+	                                		<option value="JUVENILE">Juvenil</option>
+	                                		<option value="ADULT">Adulto</option>
+	                                		<option value="SENIOR">Senior</option>
+	                                		
+	                                </select>
+	                            </div>
+			                </div>
+			                
+			                <div class="form-group">
+			                    <label class="col-sm-3 control-label">Genero</label>
+			                    <div class="col-sm-9">
+			                           <div class="btn-group btn-group-justified">
+	                                   	   <div class="btn-group" role="group" >
+	                                   	   		<button type="button" class="btn btn-default {{button.male}}"   ng-click="team.gender='MALE';button.male='btn-primary';button.female='';"  >Masculino</button>
+	                                   	   </div>
+	                                   	   <div class="btn-group" role="group" >
+	                                   	   		<button type="button" class="btn btn-default {{button.female}}" ng-click="team.gender='FEMALE';button.female='btn-primary';button.male='';">Femenino</button>
+	                                   	   </div>
+	                                   </div>
+			                       </div>
+			                </div>
+			                	<div class="form-group">
+			                		<div class="col-md-12 text-right pt5 pb0">
+				        				<button class="btn btn-success btn-block mt15 mb15"  value="button"  ng-click="update()">Guardar</button>
+				        				
+				        				<button class="btn btn-danger btn-block mt15 mb15"  value="button"  ng-click="update()">Eliminar</button>
+				        				
+				        			</div>
+			                	</div>
 		                </form>
-	                </div>
-                </div>
-        	
-        	</div>
- 	       	<div class="col-md-6">
-	 	       	<div class="panel panel-default" id="toolbar-showcase">
-	                <div class="panel-heading">
-	                    <h3 class="panel-title"><span class="panel-icon mr5"><i class="ico-list22"></i></span> Jugadores</h3>
-	                    <div class="panel-toolbar text-right">                            
-                        	<button type="button" data-toggle="modal" data-target="#modal-add" class="btn btn-sm btn-default">Agregar <i class="ico-plus"></i></button>                                                         
-                        </div>
-	                </div>
-	               <div class="panel-body panel-collapse pull out" style="padding:0px;">
-		        		<div class="media-list">
-		        			<a href="javascript:void(0);" class="media" ng-show="team.players.length==0">		                      
-		                      <span class="media-body">
-		                          <span class="media-text ellipsis nm">No se han asignado jugadores al equipo.</span>		                          
-		                      </span>
-		                  	</a>
-		                  	
-		                  <a href="#/player/{{player.oid}}" class="media" ng-repeat="player in team.players | filter:q as results">
-		                      <span class="pull-left">
-		                          <img ng-src="../image/avatar/{{player.image}}" class="media-object" alt="">
-		                      </span>
-		                      <span class="media-body">
-		                          <span class="media-heading">{{player.name}} {{player.lastName}}</span>
-		                          <span class="media-text ellipsis nm">{{player.position}}</span>
-		                          <span class="media-meta">{{player.number}}</span>
-		                      </span>
-		                  </a>
-		              </div>
+				
+				
+				</div>
+				
+				<div class="tab-pane np pt15 pb15 mh400" id="players" >
+					
+					<div class="list-group" >
+						<a class="list-group-item text-center list-group-item-info" href="#/teams/{{team.oid}}/players/add"> 
+							Agregar Jugador + 
+						</a>
+					
+						<div class="alert alert-info mt20 ml10 mr10 text-center" ng-show="!team.players || team.players.length==0">
+							<span class="media-text ellipsis nm">No se han asignado jugadores al equipo.</span>
+						</div>
+						
+						
+						<div class="list-group-item edit" ng-repeat="player in team.players | filter:q as results">
+							<div class="actions pull-right animation animating fadeInRight" style="display:none;">
+								<div class="pull-right sq-icon50 danger"><i class="ico-trash"></i></div>
+								<div class="pull-right sq-icon50 info"><i class="ico-pencil"></i></div>
+							</div>
+						
+							<span class="badge badge-number-player">{{player.number}}</span>
+							<span class="pull-left avatar mr10">
+		                        <img ng-src="../image/avatar/{{player.image}}" class="img-rounded" alt="">
+		                    </span>
+		                    <div class="clearfix" >
+								<strong>{{player.name}} {{player.lastName}}</strong>
+								<div>{{msgI18n(player.position)}}</div>
+		                    </div>
+							
+						</div>
+					
 					</div>
-	      		</div>
-	      		
-	      		
-	      		
-	      		
-	      		<div class="panel panel-default" id="toolbar-showcase">
-	                <div class="panel-heading">
-	                    <h3 class="panel-title"><span class="panel-icon mr5"><i class="ico-list22"></i></span> Coach</h3>
-	                </div>
-	               <div class="panel-body panel-collapse pull out" style="padding:0px;">
-		        		<div class="media-list">
-		        			<a href="javascript:void(0);" class="media border-dotted" ng-show="equipo.profesores.length==0">		                      
+				</div>
+				
+				<div class="tab-pane np pt15 pb15 mh400" id="staff" >
+				
+					<div class="media-list">
+		        			<a href="javascript:void(0);" class="media border-dotted" ng-show="!team.coach">		                      
 		                      <span class="media-body">
 		                          <span class="media-text ellipsis nm">No se ha asignado staff al equipo.</span>		                          
 		                      </span>
 		                  	</a>
 		                  	
-		                  <a href="#/mantenedores/jugadores/editar/{{coach.oid}}" class="media">
+		                  <a href="#/mantenedores/jugadores/editar/{{coach.oid}}" class="media" ng-show="team.coach">
 		                      <span class="pull-left">
 		                          <img ng-src="../image/avatar/{{team.coach.image}}" class="media-object" alt="">
 		                      </span>
@@ -129,105 +158,16 @@
 		                      </span>
 		                  </a>
 		              </div>
-					</div>
-	      		</div>
-
-        	</div>
+				
+				</div>
+        		</div>
         </div>
-        
-        
-        
-        
-		<div id="modal-add" class="modal fade" aria-hidden="true" style="display: none;">
-		    <div class="modal-dialog">
-		        <div class="modal-content">
-		            <div class="modal-header text-center">
-		                <button type="button" class="close" data-dismiss="modal">x</button>
-		                <h3 class="semibold modal-title">Agregar Jugador</h3>
-		            </div>
-		            <div class="modal-body">
-		            
-		            		<div class="input-group">
-                             <div class="has-icon">
-                                 <input type="text" ng-model="qj" placeholder="buscar" class="form-control" />
-                                 <i class="ico-search form-control-icon"></i>
-                             </div>
-                             <div class="input-group-btn">
-                             	<a href="#/playeers/create" class="btn btn-default">Nuevo</a>	                                        	                                       
-                             </div>
-                         </div>
-                         
-                         
-						<div class="media-list-player">
-							<a href="javascript:void(0);" class="media" ng-show="searchPlayers.length==0">		                      
-								<span class="media-body">
-									<span class="media-text ellipsis nm">No se han encontrado jugadores.</span>		                          
-								</span>
-							</a>
-							<a href="javascript:void(0);" class="media" ng-repeat="player in searchPlayers | filter:q as results">
-								<span class="pull-left">
-									<img ng-src="../image/avatar/{{player.image}}" class="media-object" alt="">
-								</span>
-								<span class="media-body">
-									<span class="media-heading">{{player.name}}</span>
-									<span class="media-text ellipsis nm">{{player.position}}</span>
-									<span class="media-meta">{{player.number}}</span>
-								</span>
-							</a>
-						</div>
+</div>
 
-		            </div>
-		            <div class="modal-footer">
-		                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-		            </div>
-		        </div>
-		    </div>
-		</div>
-		
-		
-		
-		
-		
-		<div id="modal-add-staff" class="modal fade" aria-hidden="true" style="display: none;">
-		    <div class="modal-dialog">
-		        <div class="modal-content">
-		            <div class="modal-header text-center">
-		                <button type="button" class="close" data-dismiss="modal">�</button>
-		                <h3 class="semibold modal-title">Agregar Jugador</h3>
-		            </div>
-		            <div class="modal-body">
-		            
-		            	<div class="input-group">
-                             <div class="has-icon">
-                                 <input type="text" ng-model="qj" placeholder="buscar" class="form-control" />
-                                 <i class="ico-search form-control-icon"></i>
-                             </div>
-                             <div class="input-group-btn">
-                             	<a href="#/mantenedores/jugadores/nuevo" class="btn btn-default">Nuevo</a>	                                        	                                       
-                             </div>
-                         </div>
-                         <hr/>
-		            	
-		            	<table class="table table-bordered table-hover">
-	                        <thead>
-	                            <tr>
-	                            	<th>Rut</th>
-	                                <th>Nombre</th>
-	                                <th>Tipo</th>
-	                            </tr>
-	                        </thead>
-	                        <tbody style="background:white;" >	                            
-	                            <tr ng-repeat="s in staff | filter:qj as results" ng-click="seleccionarStaff( s )" ng-class="{'success' : s.selected}">
-	                            	<td>{{s.persona.rut}}-{{s.persona.dv}}</td>
-                                    <td>{{s.persona.nombre}} {{s.persona.apellidoPaterno}}</td>
-                                    <td>{{s.tipoProfesor.nombre}}</td>
-	                            </tr>
-                            </tbody>
-                         </table>    
-		            </div>
-		            <div class="modal-footer">
-		                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-		            </div>
-		        </div>
-		    </div>
-		</div>
+
+<div class="row" ng-show="flagErrorLoading" >
+	<div class="col-md-12 mb20 mt20 text-center ">
+		<strong style="color:gray;">Ocurrio un error al cargar la información, intente más tarde</strong>
+		<div><i style="font-size:100px;color: #EBEBEB;" class=" ico-heart-broken mb20 mt20"  ></i></div>
+	</div>
+</div>

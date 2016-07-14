@@ -4,23 +4,16 @@
  *************************************************************/
 app.controller("TeamController", function($scope, $http, $location){
 	
-	$scope.ref = function( link ){
-		$location.url( link );
-	};
-	
 	
 	$scope.teams = [];
-//	
-//	$scope.teams.push( {oid:1,name:"Chicago Bulls", gender:'MALE', description:'', category:'ADULT', image:'cbulls.png'} );
-//	$scope.teams.push( {oid:1,name:"Boston Celtics", gender:'MALE', description:'', category:'ADULT', image:'bos.png'} );
-//	$scope.teams.push( {oid:1,name:"Boston Celtics", gender:'MALE', description:'', category:'ADULT', image:'bos.png'} );
-//	$scope.teams.push( {oid:1,name:"Chicago Bulls", gender:'MALE', description:'', category:'ADULT', image:'cbulls.png'} );
-//	
 	$scope.flagLoading = false;
+	$scope.flagErrorLoading = false;
 	
 	$scope.loadData = function(  )
 	{
 		$scope.flagLoading = true;
+		NProgress.configure({ parent: '#main' });
+		NProgress.start();
 		
 		var request = 
 		$http.get( CONSTANTS.contextPath + "/services/teams" );
@@ -28,14 +21,15 @@ app.controller("TeamController", function($scope, $http, $location){
 		{
 			$scope.teams = response;
 			$scope.flagLoading = false;
+			NProgress.done();
 		} );
 		request.error( function( error )
 		{
-			alert( error );
 			$scope.flagLoading = false;
+			$scope.flagErrorLoading = true;
+			NProgress.done();
 		});
 	};
-	
 	
 	$scope.loadData();
 	

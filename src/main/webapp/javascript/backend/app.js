@@ -18,6 +18,13 @@
 	
 	$(".topmenu>li>ul>li").click( function(){ $("#btn-sidebar").trigger( "click" ); } );
 	
+	$(".list-group-item.edit").click( function(){
+		$(".list-group-item .actions").each( function(){ $(this).hide(); } );
+		$(".list-group-item .badge").each( function(){ $(this).show(); } );
+		$(this).find( "div.actions" ).show();
+		$(this).find( "span.badge" ).hide();
+	} );
+	
     var APP = {
         // Core init
         // NOTE: init at html element

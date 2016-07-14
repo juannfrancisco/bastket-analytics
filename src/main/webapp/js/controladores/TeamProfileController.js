@@ -15,27 +15,36 @@ app.controller("TeamProfileController", function($scope, $http, $routeParams)
 	var player6 = {oid:1, name:'Scottie', lastName:'Pipen', number:33, position:'POWER_FORWARD', image:'pipen.jpg'};
 	var player7 = {oid:1, name:'Juan Francisco', lastName:'Maldonado', number:23, position:'SHOOTING_GUARD', image:'jordan.jpg'};
 	var player8 = {oid:1, name:'Scottie', lastName:'Pipen', number:33, position:'POWER_FORWARD', image:'pipen.jpg'};
-	$scope.team = {oid:1, name:"Chicago Bulls", bio:bio,gender:'MALE', description:'', category:'ADULT', image:'cbulls.png', 
-			playeers:[player1,player2,player3,player4,player5,player6,player7,player8], coach:coach};
+	var players = [player1,player2,player3,player4,player5,player6,player7,player8];
+//	$scope.team = {oid:1, name:"Chicago Bulls", bio:bio,gender:'MALE', description:'', category:'ADULT', image:'cbulls.png', 
+//			playeers:[player1,player2,player3,player4,player5,player6,player7,player8], coach:coach};
+//	
+//	
 	
-	
-	
+	$scope.flagLoading = true;
 	
 	$scope.loadData = function(  )
 	{
 		$scope.flagLoading = true;
+		NProgress.configure({ parent: '#main' });
+		NProgress.start();
 		
 		var request = 
 		$http.get( CONSTANTS.contextPath + "/services/teams/" + $routeParams.id );
 		request.success( function( response )
 		{
 			$scope.team = response;
+			$scope.team.players = players; //TODO: REMOVE
+			$scope.team.coach = coach;//TODO: REMOVE
+			
 			$scope.flagLoading = false;
+			NProgress.done();
 		} );
 		request.error( function( error )
 		{
 			alert( error );
 			$scope.flagLoading = false;
+			NProgress.done();
 		});
 	};
 	

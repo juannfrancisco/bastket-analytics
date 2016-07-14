@@ -38,19 +38,26 @@
                                <a href="javascript:void(0);" class="btn btn-default" ng-click="eliminar(e)"><i class="ico-remove4"></i></a>
                            </div>
                        </div>
-                       <img data-toggle="unveil" ng-src="../image/team/{{e.image}}" 
+                       <img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" 
                        	 alt="Cover" width="100%" class="unveiled">
                    </div>
                    <div class="caption">
                        <h5 class="semibold mt0 mb5">{{e.name}}</h5>
                        <p class="text-muted mb5 ellipsis">
-                       	<b>{{e.category}}</b> | {{e.gender}}  
+                       	<b>{{msgI18n(e.category)}}</b> | {{msgI18n(e.gender)}}  
                        </p>
                    </div>
                </div>
            </div>
            
-			<div class="col-md-12" ng-if="teams.length == 0">
-      			<strong>No existen equipos, presione el boton "nuevo" para agregar un equipo...</strong>
+			<div class="col-md-12" ng-if="!flagLoading && teams.length == 0">
+      			<strong ng-show="!flagErrorLoading">No existen equipos, presione el boton "nuevo" para agregar un equipo...</strong>
 			</div>
+			
+			
+			<div class="col-md-12 mb20 mt20" ng-show="flagErrorLoading" style="text-align: center;">
+      			<strong style="color:gray;">Ocurrio un error al cargar la información, intente más tarde</strong>
+      			<div><i style="font-size:100px;color: #EBEBEB;" class=" ico-heart-broken mb20 mt20"  ></i></div>
+			</div>
+			
         </div>
