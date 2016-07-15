@@ -16,19 +16,15 @@
  */
 package cl.magnolabs.basket.rest;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import cl.magnolabs.basket.core.Player;
-import cl.magnolabs.basket.core.Team;
 import cl.magnolabs.basket.services.DataSingleton;
 
 /**
@@ -36,53 +32,25 @@ import cl.magnolabs.basket.services.DataSingleton;
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-@Path( "teams" )
-public class TeamRest {
+@Path( "players" )
+public class PlayerRest {
 	
 	@GET
 	@Produces( MediaType.APPLICATION_JSON )
-	public List<Team> listAllTeams(){
-		return DataSingleton.getInstance().getTeams();
+	public List<Player> listAll(){
+		return DataSingleton.getInstance().getPlayers();
 	}
 	
 	@GET
 	@Path( "/{oid}" )
 	@Produces( MediaType.APPLICATION_JSON )
-	public Team findById( @PathParam("oid") String oid ){
-		Team team = new Team(oid);
-		for(Team t : DataSingleton.getInstance().getTeams() ){
-			if(t.equals( team) )
-				return t;
+	public Player findById( @PathParam("oid") String oid ){
+		Player player = new Player(oid);
+		for(Player p : DataSingleton.getInstance().getPlayers() ){
+			if(p.equals( player ) )
+				return p;
 		}
 		return null;
 	}
-	
-	
-	
-	@PUT
-	@Produces( MediaType.APPLICATION_JSON )
-	public void addTeam(Team team){
-		team.setOid(UUID.randomUUID().toString());
-		team.setPlayers( new ArrayList<Player>() );
-		DataSingleton.getInstance().getTeams().add(team);
-	}
-	
-	
-	@PUT
-	@Path( "/{oid}/players" )
-	@Produces( MediaType.APPLICATION_JSON )
-	public void addPlayerTeam(@PathParam("oid") String oid, Player player){
-		player.setOid(UUID.randomUUID().toString());
-		
-		DataSingleton.getInstance().getPlayers().add(player);
-		
-		Team team = new Team(oid);
-		for(Team t : DataSingleton.getInstance().getTeams() ){
-			if(t.equals( team) )
-				t.getPlayers().add(player);
-		}
-		
-	}
-	
 
 }

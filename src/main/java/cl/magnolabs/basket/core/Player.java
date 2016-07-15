@@ -46,6 +46,10 @@ public class Player extends Person{
 	}
 
 
+	public Player(String oid) {
+		this.setOid(oid);
+	}
+
 	/**
 	 * @return the number
 	 */
@@ -83,6 +87,14 @@ public class Player extends Person{
 	 */
 	public void setOid(String oid) {
 		this.oid = oid;
+	}
+	
+	
+	@Override
+	public boolean equals(Object object) {
+		if( object instanceof Player )
+			return ((Player)object).getOid().equals( this.getOid() );
+		return super.equals(object);
 	}
 
 }
