@@ -30,6 +30,7 @@ public class Person {
 	private Date birthdate;
 	private double height;
 	private double weight;
+	private Gender gender;
 	
 	
 	/**
@@ -119,5 +120,21 @@ public class Person {
 	 */
 	public void setWeight(double weight) {
 		this.weight = weight;
+	}
+
+
+	/**
+	 * @return the gender
+	 */
+	public Gender getGender() {
+		return gender;
+	}
+
+
+	/**
+	 * @param gender the gender to set
+	 */
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
 }

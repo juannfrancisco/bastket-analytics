@@ -12,7 +12,7 @@ var app = angular.module('App', ['ngRoute']).config(function($routeProvider, $co
     .when('/team/create',{controller:'TeamCreateController',templateUrl:  'pages/teams/team-create.html'})
     .when('/team/:id',{controller:'TeamProfileController',templateUrl:  'pages/teams/team-profile.html'})
     .when('/team/edit/:id',{controller:'TeamEditController',templateUrl:  'pages/teams/team-edit.html'})
-    
+    .when('/team/:id/players/add',{controller:'PlayerCreateController',templateUrl:  'pages/teams/team-add-player.html'})
     .when('/administracion/usuarios',{controller:'UsuarioController',templateUrl:  'pages/administracion/usuarios/usuarios.jsp'})
     .otherwise(
     {

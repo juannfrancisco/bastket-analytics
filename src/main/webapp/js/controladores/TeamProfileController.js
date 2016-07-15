@@ -34,8 +34,8 @@ app.controller("TeamProfileController", function($scope, $http, $routeParams)
 		request.success( function( response )
 		{
 			$scope.team = response;
-			$scope.team.players = players; //TODO: REMOVE
-			$scope.team.coach = coach;//TODO: REMOVE
+//			$scope.team.players = players; //TODO: REMOVE
+//			$scope.team.coach = coach;//TODO: REMOVE
 			
 			$scope.flagLoading = false;
 			NProgress.done();

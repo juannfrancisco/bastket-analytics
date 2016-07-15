@@ -23,6 +23,7 @@ package cl.magnolabs.basket.core;
  */
 public class Player extends Person{
 	
+	private String oid;
 	private int number;
 	private Position position;
 	
@@ -68,6 +69,20 @@ public class Player extends Person{
 	 */
 	public void setPosition(Position position) {
 		this.position = position;
+	}
+
+	/**
+	 * @return the oid
+	 */
+	public String getOid() {
+		return oid;
+	}
+
+	/**
+	 * @param oid the oid to set
+	 */
+	public void setOid(String oid) {
+		this.oid = oid;
 	}
 
 }
