@@ -16,7 +16,7 @@
 }(function () {
 
 	
-	$(".topmenu>li>ul>li").click( function(){ $("#btn-sidebar").trigger( "click" ); } );
+	//$(".topmenu>li>ul>li").click( function(){ $("#btn-sidebar").trigger( "click" ); } );
 	
 	$(".list-group-item.edit").click( function(){
 		$(".list-group-item .actions").each( function(){ $(this).hide(); } );

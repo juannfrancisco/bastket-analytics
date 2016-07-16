@@ -1,3 +1,5 @@
+<section id="main" role="main" >
+	<div class="container-fluid">
         <div class="page-header page-header-block">
             <div class="page-header-section">
                 <h4 class="title semibold">Jugadores</h4>
@@ -12,7 +14,7 @@
                                     <i class="ico-search form-control-icon"></i>
                                 </div>
                                 <div class="input-group-btn">
-                                		<a href="#/player/create" class="btn btn-default">Nuevo</a>
+                                		<a href="#/players/create" class="btn btn-default">Nuevo</a>
                                 </div>
                             </div>
                         </div>
@@ -49,14 +51,16 @@
                </div>
            </div>
            
-			<div class="col-md-12" ng-if="!flagLoading && teams.length == 0">
+			<div class="col-md-12" ng-if="!flagLoading && players.length == 0">
       			<strong ng-show="!flagErrorLoading">No existen jugadores, presione el boton "nuevo" para agregar un jugador...</strong>
 			</div>
 			
 			
 			<div class="col-md-12 mb20 mt20" ng-show="flagErrorLoading" style="text-align: center;">
       			<strong style="color:gray;">Ocurrio un error al cargar la información, intente más tarde</strong>
-      			<div><i style="font-size:100px;color: #EBEBEB;" class=" ico-heart-broken mb20 mt20"  ></i></div>
+      			<div><i style="font-size:100px;color:#EBEBEB;" class=" ico-heart-broken mb20 mt20"  ></i></div>
 			</div>
 			
         </div>
+	</div>
+</section>

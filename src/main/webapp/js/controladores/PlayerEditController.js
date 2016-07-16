@@ -2,42 +2,37 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador PerfilEquipoController
  *************************************************************/
-app.controller("TeamController", function($scope, $http, $location){
-	
-	
-	$scope.teams = [];
-	$scope.flagLoading = false;
+app.controller("PlayerEditController", function($scope, $http, $routeParams)
+{	
+	$scope.flagLoading = true;
 	$scope.flagErrorLoading = false;
+	$scope.player = {};
 	
-	
-	
-	/**
-	 * 
-	 */
-	$scope.loadData = function(  )
+	$scope.loadData = function( )
 	{
 		$scope.flagLoading = true;
 		NProgress.configure({ parent: '#main' });
 		NProgress.start();
 		
 		var request = 
-		$http.get( CONSTANTS.contextPath + "/services/teams" );
+		$http.get( CONSTANTS.contextPath + "/services/players/" + $routeParams.idPlayer );
 		request.success( function( response )
 		{
-			$scope.teams = response;
+			$scope.player = response;
 			$scope.flagLoading = false;
 			NProgress.done();
 		} );
 		request.error( function( error )
 		{
-			$scope.flagLoading = false;
 			$scope.flagErrorLoading = true;
+			$scope.flagLoading = false;
 			NProgress.done();
 		});
 	};
 	
 	
 	$scope.loadData();
+	
 	
 	
 });

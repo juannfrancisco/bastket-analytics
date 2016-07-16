@@ -5,6 +5,7 @@
 app.controller("PlayerCreateController", function( $scope, $http, $location, $routeParams )
 {
 	$scope.player = {};
+	$scope.oid = $routeParams.id;
 	
 	
 	$scope.save = function(){
@@ -19,9 +20,14 @@ app.controller("PlayerCreateController", function( $scope, $http, $location, $ro
 		
 		request.success( function( response )
 		{
-			console.log( response );
+			//console.log( response );
 			NProgress.done();
-			$location.path('/teams');
+			
+			if( $routeParams.id )
+				$location.path('/team/' +  $routeParams.id );
+			else
+				$location.path('/players');
+				
 		} );
 		request.error( function( error )
 		{

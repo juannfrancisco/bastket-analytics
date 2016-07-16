@@ -92,55 +92,53 @@
                     <span class="text pl5">Juan Francisco</span>
                 </div-->
 		    	
-				<h5 class="heading">Main Menu</h5>
+				<h5 class="heading">Menu Principal</h5>
 			    <ul class="topmenu topmenu-responsive" data-toggle="menu">
 			    		<li>
-			            <a href="javascript:void(0);" data-target="#dashboard" data-toggle="submenu" data-parent=".topmenu">
+				    		<a href="#/" data-parent=".topmenu">
+				    		<span class="figure"><i class="ico-home2"></i></span>
+				    		<span class="text">Inicio</span>				    		
+				    		</a>
+				    	</li>
+			        <li>
+			            <a href="javascript:void(0);" data-target="#teams" data-toggle="submenu" data-parent=".topmenu">
 			                <span class="figure"><i class="ico-dashboard2"></i></span>
 			                <span class="text">Administración</span>
 			                <span class="arrow"></span>
 			            </a>
-			            <ul id="dashboard" class="submenu collapse ">
-			                <li class="submenu-header ellipsis">Administración</li>
-			                <li >
-			                    <a href="#/teams"><span class="text">Equipos</span></a>
-			                </li>
-			            </ul>
-			        </li>
-			        
-			        <li >
-			            <a href="javascript:void(0);" data-target="#teams" data-toggle="submenu" data-parent=".topmenu">
-			                <span class="figure"><i class="ico-dashboard2"></i></span>
-			                <span class="text">Equipos</span>
-			                <span class="arrow"></span>
-			            </a>
 			            <ul id="teams" class="submenu collapse ">
 			                <li class="submenu-header ellipsis">Equipos</li>
-			                <li >
+			                <li>
 			                    <a href="#/teams"><span class="text">Equipos</span></a>
 			                </li>
-			                <li >
-			                    <a href="inicio#/mantenedores/profesores"><span class="text">Profesores</span></a>
-			                </li>
-			                <li >
-			                    <a href="inicio#/mantenedores/jugadores"><span class="text">Jugadores</span></a>
+			                <li>
+			                    <a href="#/players"><span class="text">Jugadores</span></a>
 			                </li>
 			            </ul>
 			        </li>
+			        <li>
+				    		<a href="#/" data-parent=".topmenu">
+				    		<span class="figure"><i class="ico-exit"></i></span>
+				    		<span class="text">Cerrar Sesion</span>				    		
+				    		</a>
+				    	</li>
 		       </ul>
 		    </section>
 		</aside>
        
-        <section id="main" role="main" >
+       	<section id="main" role="main" ng-view></section>
+       
+       
+        <!-- section id="main" role="main" >
         		<div class="container-fluid" ng-view></div>
             <a href="javascript:void();" class="totop animation" data-toggle="waypoints totop" data-showanim="bounceIn" data-hideanim="bounceOut" data-offset="50%"><i class="ico-angle-up"></i></a>
-        </section>
+        </section-->
         
         <script type="text/javascript">
         	var CONSTANTS = 
         	{
-        		 //contextPath : "/basket"
-        		contextPath : "http://basket-magnolabs.rhcloud.com/"
+        		//contextPath : "/basket"
+        		contextPath :"http://basket-magnolabs.rhcloud.com/"
         	};
         </script>
         <script type="text/javascript" src="../javascript/angular.min.js"></script>
@@ -175,6 +173,7 @@
         <script type="text/javascript" src="../js/controladores/TeamCreateController.js"></script>
         <script type="text/javascript" src="../js/controladores/PlayerController.js"></script>
         <script type="text/javascript" src="../js/controladores/PlayerCreateController.js"></script>
+        <script type="text/javascript" src="../js/controladores/PlayerEditController.js"></script>
         <script type="text/javascript" src="../js/controladores/PlayerProfileController.js"></script>
         
     </body>

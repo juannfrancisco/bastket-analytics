@@ -13215,7 +13215,7 @@ a.thumbnail.active {
 .jumbotron h1,
 .jumbotron .h1 {
   font-size: 28px;
-  line-height: 1.4;
+  line-height: 28px;
 }
 .jumbotron:first-child {
   margin: 0px;
@@ -15157,3 +15157,8 @@ hr {
 .sq-icon50.danger{ background-color: #ed5466; color:white; }
 .sq-icon50.info{ background-color: #63d3e9; color:white; }
 .sq-icon100{ width: 100px; height: 100px; }
+
+.dashboard-container{}
+.dashboard-container > .dashboard-item{ border-right: 1px solid #EBEBEB;border-bottom: 1px solid #EBEBEB; height:220px;overflow: hidden;}
+.dashboard-container > .dashboard-item > img{ width: 100%; }
+.dashboard-container > .dashboard-item > .text-item{text-align:center;padding-bottom:15px;font-weight:600;font-size: 14px;} 
