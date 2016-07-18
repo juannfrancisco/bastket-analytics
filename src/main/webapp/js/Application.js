@@ -20,6 +20,9 @@ var app = angular.module('App', ['ngRoute']).config(function($routeProvider, $co
     .when('/players',{controller:'PlayerController',templateUrl:  'pages/players/players.html'})
     .when('/players/create',{controller:'PlayerCreateController',templateUrl:  'pages/teams/team-add-player.html'})
     
+    .when('/matches',{controller:'MatchController',templateUrl:  'pages/matches/matches.html'})
+    .when('/matches/create',{controller:'MatchCreateController',templateUrl:  'pages/matches/match-create.html'})
+    
     .when('/administracion/usuarios',{controller:'UsuarioController',templateUrl:  'pages/administracion/usuarios/usuarios.jsp'})
     .otherwise(
     {

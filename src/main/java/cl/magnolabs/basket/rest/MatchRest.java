@@ -17,15 +17,16 @@
 package cl.magnolabs.basket.rest;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import cl.magnolabs.basket.core.Player;
-import cl.magnolabs.basket.core.Team;
+import cl.magnolabs.basket.core.game.Match;
 import cl.magnolabs.basket.services.DataSingleton;
 
 /**
@@ -33,32 +34,35 @@ import cl.magnolabs.basket.services.DataSingleton;
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-@Path( "players" )
-public class PlayerRest {
+@Path( "matches" )
+public class MatchRest {
+
 	
 	@GET
 	@Produces( MediaType.APPLICATION_JSON )
-	public List<Player> listAll(){
-		return DataSingleton.getInstance().getPlayers();
+	public List<Match> listAll(){
+		return DataSingleton.getInstance().getMatches();
 	}
+	
+	
+	@PUT
+	@Produces( MediaType.APPLICATION_JSON )
+	public Match add( Match match){
+		match.setOid(UUID.randomUUID().toString());
+		DataSingleton.getInstance().getMatches().add(match);
+		return match;
+	}
+	
 	
 	@GET
 	@Path( "/{oid}" )
 	@Produces( MediaType.APPLICATION_JSON )
-	public Player findById( @PathParam("oid") String oid ){
-		Player player = new Player(oid);
-		for(Player p : DataSingleton.getInstance().getPlayers() ){
-			if(p.equals( player ) )
-				player = p;
+	public Match findById( @PathParam("oid") String oid ){
+		Match match = new Match(oid);
+		for(Match t : DataSingleton.getInstance().getMatches() ){
+			if(t.equals( match) )
+				return t;
 		}
-		
-		Team team = new Team( player.getOidCurrentTeam() );
-		for(Team t : DataSingleton.getInstance().getTeams() ){
-			if(t.equals( team) )
-				player.setCurrentTeam(team);
-		}
-		
-		return player;
+		return null;
 	}
-
 }

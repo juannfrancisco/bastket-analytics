@@ -24,8 +24,11 @@ package cl.magnolabs.basket.core;
 public class Player extends Person{
 	
 	private String oid;
+	private String oidCurrentTeam;
+	private Team currentTeam;
 	private int number;
 	private Position position;
+	private SkillsPlayer skills;
 	
 	/**
 	 * 
@@ -90,11 +93,53 @@ public class Player extends Person{
 	}
 	
 	
+	/**
+	 * @return the oidCurrentTeam
+	 */
+	public String getOidCurrentTeam() {
+		return oidCurrentTeam;
+	}
+
+	/**
+	 * @param oidCurrentTeam the oidCurrentTeam to set
+	 */
+	public void setOidCurrentTeam(String oidCurrentTeam) {
+		this.oidCurrentTeam = oidCurrentTeam;
+	}
+
+	/**
+	 * @return the skills
+	 */
+	public SkillsPlayer getSkills() {
+		return skills;
+	}
+
+	/**
+	 * @param skills the skills to set
+	 */
+	public void setSkills(SkillsPlayer skills) {
+		this.skills = skills;
+	}
+
 	@Override
 	public boolean equals(Object object) {
 		if( object instanceof Player )
 			return ((Player)object).getOid().equals( this.getOid() );
 		return super.equals(object);
+	}
+
+	/**
+	 * @return the currentTeam
+	 */
+	public Team getCurrentTeam() {
+		return currentTeam;
+	}
+
+	/**
+	 * @param currentTeam the currentTeam to set
+	 */
+	public void setCurrentTeam(Team currentTeam) {
+		this.currentTeam = currentTeam;
 	}
 
 }

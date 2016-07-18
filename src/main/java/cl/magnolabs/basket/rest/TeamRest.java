@@ -74,6 +74,7 @@ public class TeamRest {
 	@Produces( MediaType.APPLICATION_JSON )
 	public void addPlayerTeam(@PathParam("oid") String oid, Player player){
 		player.setOid(UUID.randomUUID().toString());
+		player.setOidCurrentTeam(oid);
 		
 		DataSingleton.getInstance().getPlayers().add(player);
 		

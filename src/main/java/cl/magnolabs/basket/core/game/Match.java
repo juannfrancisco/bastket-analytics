@@ -19,6 +19,7 @@ package cl.magnolabs.basket.core.game;
 import java.util.Date;
 
 import cl.magnolabs.basket.core.Court;
+import cl.magnolabs.basket.core.Player;
 import cl.magnolabs.basket.core.Team;
 
 /**
@@ -28,6 +29,7 @@ import cl.magnolabs.basket.core.Team;
  */
 public class Match {
 
+	private String oid;
 	private Date date;
 	private Team visitor;
 	private Team local;
@@ -36,6 +38,132 @@ public class Match {
 	private int scoreLocal;
 	
 	private Court court;
+	private Referee referee;
 	
+	public Match(){
+	}
+
+	public Match(String oid) {
+		this.oid = oid;
+	}
+
+	/**
+	 * @return the oid
+	 */
+	public String getOid() {
+		return oid;
+	}
+
+	/**
+	 * @param oid the oid to set
+	 */
+	public void setOid(String oid) {
+		this.oid = oid;
+	}
+
+	/**
+	 * @return the date
+	 */
+	public Date getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	/**
+	 * @return the visitor
+	 */
+	public Team getVisitor() {
+		return visitor;
+	}
+
+	/**
+	 * @param visitor the visitor to set
+	 */
+	public void setVisitor(Team visitor) {
+		this.visitor = visitor;
+	}
+
+	/**
+	 * @return the local
+	 */
+	public Team getLocal() {
+		return local;
+	}
+
+	/**
+	 * @param local the local to set
+	 */
+	public void setLocal(Team local) {
+		this.local = local;
+	}
+
+	/**
+	 * @return the scoreVisitor
+	 */
+	public int getScoreVisitor() {
+		return scoreVisitor;
+	}
+
+	/**
+	 * @param scoreVisitor the scoreVisitor to set
+	 */
+	public void setScoreVisitor(int scoreVisitor) {
+		this.scoreVisitor = scoreVisitor;
+	}
+
+	/**
+	 * @return the scoreLocal
+	 */
+	public int getScoreLocal() {
+		return scoreLocal;
+	}
+
+	/**
+	 * @param scoreLocal the scoreLocal to set
+	 */
+	public void setScoreLocal(int scoreLocal) {
+		this.scoreLocal = scoreLocal;
+	}
+
+	/**
+	 * @return the court
+	 */
+	public Court getCourt() {
+		return court;
+	}
+
+	/**
+	 * @param court the court to set
+	 */
+	public void setCourt(Court court) {
+		this.court = court;
+	}
+
+	/**
+	 * @return the referee
+	 */
+	public Referee getReferee() {
+		return referee;
+	}
+
+	/**
+	 * @param referee the referee to set
+	 */
+	public void setReferee(Referee referee) {
+		this.referee = referee;
+	}
+	
+	@Override
+	public boolean equals(Object object) {
+		if( object instanceof Match )
+			return ((Match)object).getOid().equals( this.getOid() );
+		return super.equals(object);
+	}
 	
 }

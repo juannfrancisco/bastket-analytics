@@ -12,9 +12,9 @@
                 <h1 class="thin text-white text-center font-alt">{{team.name}}</h1>
 		        <!-- h4 class="thin text-white text-center">Cantidad de jugadores {{team.playeers.length}}</h4-->
 		        
-		        <div class="text-center pt15">
+		        <!-- <div class="text-center pt15">
 		            <a href="#/team/edit/{{team.oid}}" class="btn btn-primary btn-block">Editar <i class=" ico-edit-sign"></i></a>
-		        </div>
+		        </div> -->
 		        
 		    </div>
 	</section>
@@ -25,7 +25,19 @@
                 <h4 class="title semibold hidden-xs hidden-sm">{{team.name}}</h4>
             </div>
             <div class="page-header-section">
-                <div class="toolbar">
+            		<div class="row hidden-md">
+            			<div class="col-md-3 col-xs-3 pl15" >
+              			<a href="#/teams" class="btn btn-primary btn-outline mb5">Volver</a>
+	              	</div>
+	              	<div class="col-md-6 col-xs-6" >
+	              		<h4 class="title semibold"></h4>
+	              	</div>
+	              	<div class="col-md-3 col-xs-3" >
+	              		<a href="#/team/edit/{{team.oid}}" class="btn btn-primary btn-outline mb5">Editar</a>
+	              	</div>
+            		</div>
+            
+                <div class="toolbar hidden-xs hidden-sm">
                     <ol class="breadcrumb breadcrumb-transparent nm">
                         <li><a href="#/">Home</a></li>
                         <li><a href="#/teams">Todos los Equipos</a></li>
