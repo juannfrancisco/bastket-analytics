@@ -27,6 +27,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import cl.magnolabs.basket.core.game.Match;
+import cl.magnolabs.basket.core.game.MatchState;
 import cl.magnolabs.basket.services.DataSingleton;
 
 /**
@@ -49,6 +50,7 @@ public class MatchRest {
 	@Produces( MediaType.APPLICATION_JSON )
 	public Match add( Match match){
 		match.setOid(UUID.randomUUID().toString());
+		match.setState( MatchState.PENDING );
 		DataSingleton.getInstance().getMatches().add(match);
 		return match;
 	}

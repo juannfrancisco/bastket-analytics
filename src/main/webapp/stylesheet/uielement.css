@@ -15161,4 +15161,18 @@ hr {
 .dashboard-container{}
 .dashboard-container > .dashboard-item{ border-right: 1px solid #EBEBEB;border-bottom: 1px solid #EBEBEB; height:220px;overflow: hidden;}
 .dashboard-container > .dashboard-item > img{ width: 100%; }
-.dashboard-container > .dashboard-item > .text-item{text-align:center;padding-bottom:15px;font-weight:600;font-size: 14px;} 
+.dashboard-container > .dashboard-item > .text-item{text-align:center;padding-bottom:15px;font-weight:600;font-size: 14px;}
+
+@media (max-width: 767px) {
+	.uib-datepicker-popup{width: 100%;}
+	.uib-datepicker{width: 100%;} 
+	.uib-daypicker{width: 100%;}
+	.uib-monthpicker{width: 100%;}
+	
+	.match-profile-header{margin:auto;}
+	.match-profile-header > .team > .locale{ font-weight:bold; margin:10px;font-size:16px;color:gray; }
+	.match-profile-header > .team > img{ width:100px; }
+	.match-profile-header > .team > .name{ font-weight:bold; margin:10px; font-size:16px; }
+	
+}
+

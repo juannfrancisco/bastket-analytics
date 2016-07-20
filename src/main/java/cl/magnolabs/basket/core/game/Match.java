@@ -19,7 +19,6 @@ package cl.magnolabs.basket.core.game;
 import java.util.Date;
 
 import cl.magnolabs.basket.core.Court;
-import cl.magnolabs.basket.core.Player;
 import cl.magnolabs.basket.core.Team;
 
 /**
@@ -39,6 +38,8 @@ public class Match {
 	
 	private Court court;
 	private Referee referee;
+	
+	private MatchState state;
 	
 	public Match(){
 	}
@@ -159,6 +160,20 @@ public class Match {
 		this.referee = referee;
 	}
 	
+	/**
+	 * @return the state
+	 */
+	public MatchState getState() {
+		return state;
+	}
+
+	/**
+	 * @param state the state to set
+	 */
+	public void setState(MatchState state) {
+		this.state = state;
+	}
+
 	@Override
 	public boolean equals(Object object) {
 		if( object instanceof Match )

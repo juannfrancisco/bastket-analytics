@@ -37,7 +37,7 @@
         
         <div class="row" >
         		<div class="list-group" >
-	        		<div class="list-group-item" ng-repeat="e in matches | filter:q as results">
+	        		<div class="list-group-item" ng-repeat="e in matches | filter:q as results" ng-click="ref('/match/'+ e.oid)">
 	        			<div class="row" >
 		        			<div class="col-md-6 col-xs-6 text-center">
 		        				<div>Equipo Local</div>

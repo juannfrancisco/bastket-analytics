@@ -8,6 +8,15 @@ app.controller("MatchCreateController", function($scope, $http, $location){
 	$scope.teams = [];
 	$scope.flagLoading = false;
 	$scope.flagErrorLoading = false;
+	$scope.dateOptions = {
+			formatYear: 'yy',
+		    maxDate: new Date(2020, 5, 22),
+		    minDate: new Date(),
+		    startingDay: 1
+	};
+
+	
+	
 	
 	$scope.loadData = function(  )
 	{
@@ -42,7 +51,7 @@ app.controller("MatchCreateController", function($scope, $http, $location){
 		{
 			console.log( response );
 			NProgress.done();
-			$location.path('/matches');
+			$location.path('/match/'+ response.oid);
 		} );
 		request.error( function( error )
 		{

@@ -88,10 +88,16 @@
 			                    <div class="col-sm-9">
 			                           <div class="btn-group btn-group-justified">
 	                                   	   <div class="btn-group" role="group" >
-	                                   	   		<button type="button" class="btn btn-default {{button.male}}"   ng-click="team.gender='MALE';button.male='btn-primary';button.female='';"  >Masculino</button>
+	                                   	   		<button type="button" 
+	                                   	   		class="btn btn-default {{button.male}}"   
+	                                   	   		ng-model="team.gender" 
+                                            	   	uib-btn-radio="'MALE'" >Masculino</button>
 	                                   	   </div>
 	                                   	   <div class="btn-group" role="group" >
-	                                   	   		<button type="button" class="btn btn-default {{button.female}}" ng-click="team.gender='FEMALE';button.female='btn-primary';button.male='';">Femenino</button>
+	                                   	   		<button type="button" 
+	                                   	   		class="btn btn-default {{button.female}}" 
+	                                   	   		ng-model="team.gender" 
+                                            	   	uib-btn-radio="'FEMALE'">Femenino</button>
 	                                   	   </div>
 	                                   </div>
 			                       </div>

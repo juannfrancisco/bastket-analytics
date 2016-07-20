@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ngRoute']).config(function($routeProvider, $controllerProvider) 
+var app = angular.module('App', ['ui.bootstrap','ngRoute']).config(function($routeProvider, $controllerProvider) 
 {
 	app.registerCtrl = $controllerProvider.register;
 	$routeProvider
@@ -15,12 +15,13 @@ var app = angular.module('App', ['ngRoute']).config(function($routeProvider, $co
     .when('/team/:id/players/add',{controller:'PlayerCreateController',templateUrl:  'pages/teams/team-add-player.html'})
     .when('/team/:id/players/:idPlayer/edit',{controller:'PlayerEditController',templateUrl:  'pages/teams/team-edit-player.html'})
     
-    
     .when('/player/:id',{controller:'PlayerProfileController',templateUrl:  'pages/players/player-profile.html'})
     .when('/players',{controller:'PlayerController',templateUrl:  'pages/players/players.html'})
     .when('/players/create',{controller:'PlayerCreateController',templateUrl:  'pages/teams/team-add-player.html'})
     
     .when('/matches',{controller:'MatchController',templateUrl:  'pages/matches/matches.html'})
+    .when('/match/:id',{controller:'MatchProfileController',templateUrl:  'pages/matches/match-profile.html'})
+    .when('/match/:id/playing',{controller:'MatchProfileController',templateUrl:  'pages/matches/match-playing.html'})
     .when('/matches/create',{controller:'MatchCreateController',templateUrl:  'pages/matches/match-create.html'})
     
     .when('/administracion/usuarios',{controller:'UsuarioController',templateUrl:  'pages/administracion/usuarios/usuarios.jsp'})
@@ -36,7 +37,7 @@ var app = angular.module('App', ['ngRoute']).config(function($routeProvider, $co
 
 /*************************************************************
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
- * @desc Controlador PerfilEquipoController
+ * @desc Controlador 
  *************************************************************/
 app.controller("DashboardController", function($scope, $http, $location)
 {
