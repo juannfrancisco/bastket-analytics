@@ -16,15 +16,22 @@
  */
 package cl.magnolabs.basket.core;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
+@Document(collection = "players")
 public class Player extends Person{
 	
+	@Id
 	private String oid;
 	private String oidCurrentTeam;
+	@Transient
 	private Team currentTeam;
 	private int number;
 	private Position position;

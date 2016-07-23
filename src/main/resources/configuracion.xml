@@ -1,19 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context" 
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:context="http://www.springframework.org/schema/context"
+          xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+          xsi:schemaLocation=
+          "http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context-3.0.xsd
+          http://www.springframework.org/schema/data/mongo 
+          http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+ 
+	<!--<mongo:mongo host="localhost" port="27017" />
+	<mongo:db-factory dbname="basket" mongo-ref="mongo" /> -->
 
-	
-	<bean id="persona1" class="cl.magnolabs.basket.core.Person" >
-		<property name="name" value="Juan Francisco"></property>
-		<property name="lastName" value="Maldonado"></property>
+	 <mongo:mongo host="127.2.119.130" port="27017" />
+	<mongo:db-factory dbname="basket" mongo-ref="mongo" username="admin" password="BNF3hkvZLUsl" />
+ 
+	<bean id="mongo-connection" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
 	</bean>
 	
-	<bean id="persona2" class="cl.magnolabs.basket.core.Person" >
-		<property name="name" value="Francisco"></property>
-		<property name="lastName" value="Maldonado"></property>
+	<bean id="team-dao-db" class="cl.magnolabs.basket.dao.team.TeamDAODB" >
+		<property name="connection" ref="mongo-connection"></property>
+	</bean>
+	<bean id="team-dao-dummy" class="cl.magnolabs.basket.dao.team.TeamDAODummy" ></bean>
+	<bean id="team-facade" class="cl.magnolabs.basket.facade.TeamFacade" >
+		<property name="dao" ref="team-dao-db"></property>
 	</bean>
 	
-
+	
+	<bean id="player-dao-db" class="cl.magnolabs.basket.dao.player.PlayerDAODB" >
+		<property name="connection" ref="mongo-connection"></property>
+	</bean>
+	<bean id="player-dao-dummy" class="cl.magnolabs.basket.dao.player.PlayerDAODummy" ></bean>
+	<bean id="player-facade" class="cl.magnolabs.basket.facade.PlayerFacade" >
+		<property name="dao" ref="player-dao-db"></property>
+	</bean>
+	
+ 
 </beans>

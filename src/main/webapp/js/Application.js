@@ -21,7 +21,7 @@ var app = angular.module('App', ['ui.bootstrap','ngRoute']).config(function($rou
     
     .when('/matches',{controller:'MatchController',templateUrl:  'pages/matches/matches.html'})
     .when('/match/:id',{controller:'MatchProfileController',templateUrl:  'pages/matches/match-profile.html'})
-    .when('/match/:id/playing',{controller:'MatchProfileController',templateUrl:  'pages/matches/match-playing.html'})
+    .when('/match/:id/playing',{controller:'MatchPlayingController',templateUrl:  'pages/matches/match-playing.html'})
     .when('/matches/create',{controller:'MatchCreateController',templateUrl:  'pages/matches/match-create.html'})
     
     .when('/administracion/usuarios',{controller:'UsuarioController',templateUrl:  'pages/administracion/usuarios/usuarios.jsp'})

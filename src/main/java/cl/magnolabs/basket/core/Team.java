@@ -18,17 +18,24 @@ package cl.magnolabs.basket.core;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
+@Document(collection = "teams")
 public class Team {
 
+	@Id
 	private String oid;
 	private String name;
 	private String bio;
 	private Gender gender;
+	@DBRef
 	private List<Player> players;
 	private Coach coach;
 	private TeamCategory category;

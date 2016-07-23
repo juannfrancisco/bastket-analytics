@@ -14,53 +14,62 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cl.magnolabs.basket.rest;
+package cl.magnolabs.basket.facade;
 
 import java.util.List;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
 import cl.magnolabs.basket.core.Player;
 import cl.magnolabs.basket.core.Team;
-import cl.magnolabs.basket.facade.PlayerFacade;
-import cl.magnolabs.basket.services.DataSingleton;
-import cl.magnolabs.basket.services.ServiceLocator;
+import cl.magnolabs.basket.dao.player.PlayerDAO;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-@Path( "players" )
-public class PlayerRest {
+public class PlayerFacade {
+
+	private PlayerDAO dao;
 	
-	@GET
-	@Produces( MediaType.APPLICATION_JSON )
-	public List<Player> listAll(){
-		return getFacade().getAll();
+	/**
+	 * 
+	 * @param player
+	 */
+	public void save( Player player ){
+		dao.save(player);
 	}
-	
-	@GET
-	@Path( "/{oid}" )
-	@Produces( MediaType.APPLICATION_JSON )
-	public Player findById( @PathParam("oid") String oid ){
-		Player player = new Player(oid);
-		player = getFacade().getById(player);
-		return player;
-	}
-	
-	
 	
 	/**
 	 * 
 	 * @return
 	 */
-	private PlayerFacade getFacade(){
-		return (PlayerFacade)ServiceLocator.getInstance().getBean("player-facade");
+	public List<Player> getAll( ){
+		return dao.getAll();
+	}
+	
+	
+	/**
+	 * 
+	 * @param player
+	 * @return
+	 */
+	public Player getById( Player player ){
+		return dao.getByID(player);
+	}
+	
+
+	/**
+	 * @return the dao
+	 */
+	public PlayerDAO getDao() {
+		return dao;
 	}
 
+	/**
+	 * @param dao the dao to set
+	 */
+	public void setDao(PlayerDAO dao) {
+		this.dao = dao;
+	}
+	
 }

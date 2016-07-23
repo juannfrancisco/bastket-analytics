@@ -28,6 +28,7 @@ import javax.ws.rs.core.MediaType;
 
 import cl.magnolabs.basket.core.game.Match;
 import cl.magnolabs.basket.core.game.MatchState;
+import cl.magnolabs.basket.facade.MatchFacade;
 import cl.magnolabs.basket.services.DataSingleton;
 
 /**
@@ -42,7 +43,8 @@ public class MatchRest {
 	@GET
 	@Produces( MediaType.APPLICATION_JSON )
 	public List<Match> listAll(){
-		return DataSingleton.getInstance().getMatches();
+		//return DataSingleton.getInstance().getMatches();
+		return MatchFacade.getAll();
 	}
 	
 	
@@ -51,7 +53,8 @@ public class MatchRest {
 	public Match add( Match match){
 		match.setOid(UUID.randomUUID().toString());
 		match.setState( MatchState.PENDING );
-		DataSingleton.getInstance().getMatches().add(match);
+		//DataSingleton.getInstance().getMatches().add(match);
+		MatchFacade.save(match);
 		return match;
 	}
 	

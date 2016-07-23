@@ -14,53 +14,60 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cl.magnolabs.basket.rest;
+package cl.magnolabs.basket.dao.team;
 
 import java.util.List;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
-import cl.magnolabs.basket.core.Player;
 import cl.magnolabs.basket.core.Team;
-import cl.magnolabs.basket.facade.PlayerFacade;
 import cl.magnolabs.basket.services.DataSingleton;
-import cl.magnolabs.basket.services.ServiceLocator;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-@Path( "players" )
-public class PlayerRest {
-	
-	@GET
-	@Produces( MediaType.APPLICATION_JSON )
-	public List<Player> listAll(){
-		return getFacade().getAll();
+public class TeamDAODummy extends TeamDAO {
+
+	/**
+	 * 
+	 * @param team
+	 */
+	public void save( Team team ){
+		boolean flag = false;
+		for(Team t : DataSingleton.getInstance().getTeams() ){
+			if(t.equals( team) ){
+				t = team;
+				flag = true;
+			}
+		}
+		if( !flag )
+			DataSingleton.getInstance().getTeams().add(team);
 	}
 	
-	@GET
-	@Path( "/{oid}" )
-	@Produces( MediaType.APPLICATION_JSON )
-	public Player findById( @PathParam("oid") String oid ){
-		Player player = new Player(oid);
-		player = getFacade().getById(player);
-		return player;
+
+	@Override
+	public void update(Team team) {
+		
 	}
-	
-	
 	
 	/**
 	 * 
 	 * @return
 	 */
-	private PlayerFacade getFacade(){
-		return (PlayerFacade)ServiceLocator.getInstance().getBean("player-facade");
+	public List<Team> getAll(  ){
+		return DataSingleton.getInstance().getTeams();
 	}
-
+	
+	/**
+	 * 
+	 * @param team
+	 * @return
+	 */
+	public Team getByID( Team team ){
+		for(Team t : DataSingleton.getInstance().getTeams() ){
+			if( t.equals( team ) )
+				return t;
+		}
+		return null;
+	}
 }

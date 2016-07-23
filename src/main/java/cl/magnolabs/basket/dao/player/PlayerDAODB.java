@@ -14,53 +14,73 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cl.magnolabs.basket.rest;
+package cl.magnolabs.basket.dao.player;
 
 import java.util.List;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import org.springframework.data.mongodb.core.MongoOperations;
 
 import cl.magnolabs.basket.core.Player;
-import cl.magnolabs.basket.core.Team;
-import cl.magnolabs.basket.facade.PlayerFacade;
-import cl.magnolabs.basket.services.DataSingleton;
-import cl.magnolabs.basket.services.ServiceLocator;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-@Path( "players" )
-public class PlayerRest {
+public class PlayerDAODB extends PlayerDAO {
 	
-	@GET
-	@Produces( MediaType.APPLICATION_JSON )
-	public List<Player> listAll(){
-		return getFacade().getAll();
+	
+	private MongoOperations connection;
+
+	/**
+	 * 
+	 * @param team
+	 */
+	public void save( Player player ){
+		connection.save(player);
 	}
 	
-	@GET
-	@Path( "/{oid}" )
-	@Produces( MediaType.APPLICATION_JSON )
-	public Player findById( @PathParam("oid") String oid ){
-		Player player = new Player(oid);
-		player = getFacade().getById(player);
-		return player;
+
+	@Override
+	public void update(Player player) {
 	}
-	
-	
 	
 	/**
 	 * 
 	 * @return
 	 */
-	private PlayerFacade getFacade(){
-		return (PlayerFacade)ServiceLocator.getInstance().getBean("player-facade");
+	public List<Player> getAll( ){
+		return connection.findAll( Player.class );
+	}
+	
+	/**
+	 * 
+	 * @param team
+	 * @return
+	 */
+	public Player getByID( Player player ){
+		
+		player = connection.findById( player.getOid(), Player.class );
+		if( null == player )
+			throw new RuntimeException("No se ha encontrado el equipo");
+		return player;
+	}
+	
+	
+
+	/**
+	 * @return the connection
+	 */
+	public MongoOperations getConnection() {
+		return connection;
 	}
 
+	/**
+	 * @param connection the connection to set
+	 */
+	public void setConnection(MongoOperations connection) {
+		this.connection = connection;
+	}
+	
+	
 }

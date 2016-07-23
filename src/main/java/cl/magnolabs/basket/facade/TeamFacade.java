@@ -14,20 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cl.magnolabs.basket.rest;
+package cl.magnolabs.basket.facade;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import java.util.UUID;
 
 import cl.magnolabs.basket.core.Player;
 import cl.magnolabs.basket.core.Team;
-import cl.magnolabs.basket.facade.PlayerFacade;
-import cl.magnolabs.basket.services.DataSingleton;
+import cl.magnolabs.basket.dao.team.TeamDAO;
 import cl.magnolabs.basket.services.ServiceLocator;
 
 /**
@@ -35,32 +30,57 @@ import cl.magnolabs.basket.services.ServiceLocator;
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-@Path( "players" )
-public class PlayerRest {
+public class TeamFacade {
+
+	private TeamDAO dao;
 	
-	@GET
-	@Produces( MediaType.APPLICATION_JSON )
-	public List<Player> listAll(){
-		return getFacade().getAll();
+	/**
+	 * @param team
+	 */
+	public void save( Team team ){
+		team.setOid(UUID.randomUUID().toString());
+		team.setPlayers( new ArrayList<Player>() );
+		dao.save(team);
 	}
 	
-	@GET
-	@Path( "/{oid}" )
-	@Produces( MediaType.APPLICATION_JSON )
-	public Player findById( @PathParam("oid") String oid ){
-		Player player = new Player(oid);
-		player = getFacade().getById(player);
-		return player;
+	public List<Team> getAll(  ){
+		return dao.getAll();
 	}
 	
-	
+	public Team getById( Team team ){
+		return dao.getByID(team);
+	}
 	
 	/**
 	 * 
-	 * @return
+	 * @param team
+	 * @param player
 	 */
-	private PlayerFacade getFacade(){
-		return (PlayerFacade)ServiceLocator.getInstance().getBean("player-facade");
+	public void addPlayer( Team team, Player player ){
+		player.setOid(UUID.randomUUID().toString());
+		player.setOidCurrentTeam(team.getOid());
+		
+		PlayerFacade facade = (PlayerFacade)ServiceLocator.getInstance().getBean("player-facade");
+		facade.save(player);
+		
+		team = dao.getByID(team);
+		team.getPlayers().add(player);
+		dao.save(team);
 	}
 
+	/**
+	 * @return the dao
+	 */
+	public TeamDAO getDao() {
+		return dao;
+	}
+
+	/**
+	 * @param dao the dao to set
+	 */
+	public void setDao(TeamDAO dao) {
+		this.dao = dao;
+	}
+		
+	
 }

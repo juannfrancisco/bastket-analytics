@@ -16,9 +16,7 @@
  */
 package cl.magnolabs.basket.rest;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -30,7 +28,9 @@ import javax.ws.rs.core.MediaType;
 
 import cl.magnolabs.basket.core.Player;
 import cl.magnolabs.basket.core.Team;
+import cl.magnolabs.basket.facade.TeamFacade;
 import cl.magnolabs.basket.services.DataSingleton;
+import cl.magnolabs.basket.services.ServiceLocator;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
@@ -43,7 +43,7 @@ public class TeamRest {
 	@GET
 	@Produces( MediaType.APPLICATION_JSON )
 	public List<Team> listAllTeams(){
-		return DataSingleton.getInstance().getTeams();
+		return getFacade().getAll();
 	}
 	
 	@GET
@@ -51,38 +51,21 @@ public class TeamRest {
 	@Produces( MediaType.APPLICATION_JSON )
 	public Team findById( @PathParam("oid") String oid ){
 		Team team = new Team(oid);
-		for(Team t : DataSingleton.getInstance().getTeams() ){
-			if(t.equals( team) )
-				return t;
-		}
-		return null;
+		return getFacade().getById(team);
 	}
-	
-	
 	
 	@PUT
 	@Produces( MediaType.APPLICATION_JSON )
 	public void addTeam(Team team){
-		team.setOid(UUID.randomUUID().toString());
-		team.setPlayers( new ArrayList<Player>() );
-		DataSingleton.getInstance().getTeams().add(team);
+		getFacade().save(team);
 	}
-	
 	
 	@PUT
 	@Path( "/{oid}/players" )
 	@Produces( MediaType.APPLICATION_JSON )
 	public void addPlayerTeam(@PathParam("oid") String oid, Player player){
-		player.setOid(UUID.randomUUID().toString());
-		player.setOidCurrentTeam(oid);
-		
-		DataSingleton.getInstance().getPlayers().add(player);
-		
 		Team team = new Team(oid);
-		for(Team t : DataSingleton.getInstance().getTeams() ){
-			if(t.equals( team) )
-				t.getPlayers().add(player);
-		}
+		getFacade().addPlayer(team, player);
 	}
 	
 	
@@ -100,5 +83,12 @@ public class TeamRest {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
+	private TeamFacade getFacade(){
+		return (TeamFacade)ServiceLocator.getInstance().getBean("team-facade");
+	}
 
 }
