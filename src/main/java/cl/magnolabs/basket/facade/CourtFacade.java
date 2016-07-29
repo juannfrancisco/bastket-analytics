@@ -17,48 +17,51 @@
 package cl.magnolabs.basket.facade;
 
 import java.util.List;
+import java.util.UUID;
 
-import cl.magnolabs.basket.core.game.Match;
-import cl.magnolabs.basket.dao.match.MatchDAO;
+import cl.magnolabs.basket.core.Court;
+import cl.magnolabs.basket.dao.court.CourtDAO;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-public class MatchFacade {
+public class CourtFacade {
+
+	private CourtDAO dao;
 	
-	private MatchDAO dao;
-	
-	public void save( Match match ){
-		dao.save(match);
+	/**
+	 * @param team
+	 */
+	public void save( Court court ){
+		court.setOid(UUID.randomUUID().toString());
+		dao.save(court);
 	}
 	
-	public List<Match> getAll(  ){
+	public List<Court> getAll(  ){
 		return dao.getAll();
 	}
 	
-	/**
-	 * 
-	 * @param match
-	 * @return
-	 */
-	public Match findById( Match match ){
-		return dao.findById( match );
+	public Court getById( Court court ){
+		return dao.getByID(court);
 	}
+	
+	
 
 	/**
 	 * @return the dao
 	 */
-	public MatchDAO getDao() {
+	public CourtDAO getDao() {
 		return dao;
 	}
 
 	/**
 	 * @param dao the dao to set
 	 */
-	public void setDao(MatchDAO dao) {
+	public void setDao(CourtDAO dao) {
 		this.dao = dao;
 	}
-
+		
+	
 }

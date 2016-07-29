@@ -18,6 +18,10 @@ package cl.magnolabs.basket.core.game;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import cl.magnolabs.basket.core.Court;
 import cl.magnolabs.basket.core.Team;
 
@@ -26,11 +30,15 @@ import cl.magnolabs.basket.core.Team;
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
+@Document(collection = "matches")
 public class Match {
 
+	@Id
 	private String oid;
 	private Date date;
+	@DBRef
 	private Team visitor;
+	@DBRef
 	private Team local;
 	
 	private int scoreVisitor;

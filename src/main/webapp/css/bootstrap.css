@@ -1085,7 +1085,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333;
+  color: #b2e2ff;
   background-color: #fff;
 }
 input,
@@ -5026,6 +5026,10 @@ a.thumbnail.active {
 .thumbnail .caption {
   padding: 9px;
   color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 40px;
+  
 }
 .alert {
   padding: 15px;

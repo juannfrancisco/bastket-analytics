@@ -21,7 +21,7 @@ app.controller("MatchCreateController", function($scope, $http, $location){
 	$scope.loadData = function(  )
 	{
 		$scope.flagLoading = true;
-		NProgress.configure({ parent: '#main' });
+//		NProgress.configure({ parent: '#main' });
 		NProgress.start();
 		
 		var request = 

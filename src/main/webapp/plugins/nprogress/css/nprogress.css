@@ -1,6 +1,6 @@
 /* Make clicks pass-through */
 #nprogress {
-  pointer-events: none;
+  /*¡pointer-events: none;*/
 }
 
 #nprogress .bar {
@@ -52,6 +52,59 @@
   -webkit-animation: nprogress-spinner 400ms linear infinite;
           animation: nprogress-spinner 400ms linear infinite;
 }
+
+
+
+#nprogress .image-load4 {
+	top:60px;
+	background: url(../../../image/loading/basket-loading4.gif) no-repeat;
+	background-position:center;
+	background-color:white;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+#nprogress .image-load3 {
+	top:60px;
+	background: url(../../../image/loading/basket-loading3.gif) no-repeat;
+	background-position:center;
+	background-color:white;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+#nprogress .image-load2 {
+	top:60px;
+	background: url(../../../image/loading/basket-loading2.gif) no-repeat;
+	background-position:center;
+	background-color:#321c34;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+#nprogress .image-load {
+	top:60px;
+	background: url(../../../image/loading/basket-loading.gif) no-repeat;
+	background-position:center;
+	background-color:#fd5f60;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+#nprogress .text-load {
+	position: fixed;
+	bottom:30px;
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+	font-size: 20px;
+/* 	color:white; */
+}
+
 
 .nprogress-custom-parent {
   overflow: hidden;

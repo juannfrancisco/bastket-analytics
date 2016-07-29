@@ -14,51 +14,73 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cl.magnolabs.basket.facade;
+package cl.magnolabs.basket.dao.court;
 
 import java.util.List;
 
-import cl.magnolabs.basket.core.game.Match;
-import cl.magnolabs.basket.dao.match.MatchDAO;
+import org.springframework.data.mongodb.core.MongoOperations;
+
+import cl.magnolabs.basket.core.Court;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-public class MatchFacade {
+public class CourtDAODB extends CourtDAO {
 	
-	private MatchDAO dao;
 	
-	public void save( Match match ){
-		dao.save(match);
+	private MongoOperations connection;
+
+	/**
+	 * 
+	 * @param team
+	 */
+	public void save( Court court  ){
+		connection.save(court);
 	}
 	
-	public List<Match> getAll(  ){
-		return dao.getAll();
+
+	@Override
+	public void update(Court court ) {
 	}
 	
 	/**
 	 * 
-	 * @param match
 	 * @return
 	 */
-	public Match findById( Match match ){
-		return dao.findById( match );
+	public List<Court> getAll( ){
+		return connection.findAll( Court.class );
+	}
+	
+	/**
+	 * 
+	 * @param team
+	 * @return
+	 */
+	public Court getByID( Court court ){
+		
+		court = connection.findById( court.getOid(), Court.class );
+		if( null == court )
+			throw new RuntimeException("No se ha encontrado el equipo");
+		return court;
+	}
+	
+	
+
+	/**
+	 * @return the connection
+	 */
+	public MongoOperations getConnection() {
+		return connection;
 	}
 
 	/**
-	 * @return the dao
+	 * @param connection the connection to set
 	 */
-	public MatchDAO getDao() {
-		return dao;
+	public void setConnection(MongoOperations connection) {
+		this.connection = connection;
 	}
-
-	/**
-	 * @param dao the dao to set
-	 */
-	public void setDao(MatchDAO dao) {
-		this.dao = dao;
-	}
-
+	
+	
 }

@@ -14,51 +14,60 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cl.magnolabs.basket.facade;
+package cl.magnolabs.basket.dao.court;
 
 import java.util.List;
 
-import cl.magnolabs.basket.core.game.Match;
-import cl.magnolabs.basket.dao.match.MatchDAO;
+import cl.magnolabs.basket.core.Court;
+import cl.magnolabs.basket.services.DataSingleton;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-public class MatchFacade {
-	
-	private MatchDAO dao;
-	
-	public void save( Match match ){
-		dao.save(match);
+public class CourtDAODummy extends CourtDAO {
+
+	/**
+	 * 
+	 * @param team
+	 */
+	public void save( Court court ){
+		boolean flag = false;
+		for(Court t : DataSingleton.getInstance().getCourts() ){
+			if(t.equals( court) ){
+				t = court;
+				flag = true;
+			}
+		}
+		if( !flag )
+			DataSingleton.getInstance().getCourts().add(court);
 	}
 	
-	public List<Match> getAll(  ){
-		return dao.getAll();
+
+	@Override
+	public void update(Court court) {
+		
 	}
 	
 	/**
 	 * 
-	 * @param match
 	 * @return
 	 */
-	public Match findById( Match match ){
-		return dao.findById( match );
+	public List<Court> getAll(  ){
+		return DataSingleton.getInstance().getCourts();
 	}
-
+	
 	/**
-	 * @return the dao
+	 * 
+	 * @param team
+	 * @return
 	 */
-	public MatchDAO getDao() {
-		return dao;
+	public Court getByID( Court court ){
+		for(Court t : DataSingleton.getInstance().getCourts() ){
+			if( t.equals( court ) )
+				return t;
+		}
+		return null;
 	}
-
-	/**
-	 * @param dao the dao to set
-	 */
-	public void setDao(MatchDAO dao) {
-		this.dao = dao;
-	}
-
 }

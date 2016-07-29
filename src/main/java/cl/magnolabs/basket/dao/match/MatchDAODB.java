@@ -14,51 +14,54 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cl.magnolabs.basket.facade;
+package cl.magnolabs.basket.dao.match;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.MongoOperations;
+
 import cl.magnolabs.basket.core.game.Match;
-import cl.magnolabs.basket.dao.match.MatchDAO;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-public class MatchFacade {
+public class MatchDAODB extends MatchDAO {
 	
-	private MatchDAO dao;
+	private MongoOperations connection;
 	
+	/**
+	 * 
+	 */
 	public void save( Match match ){
-		dao.save(match);
-	}
-	
-	public List<Match> getAll(  ){
-		return dao.getAll();
+		connection.save(match);
 	}
 	
 	/**
 	 * 
-	 * @param match
-	 * @return
 	 */
-	public Match findById( Match match ){
-		return dao.findById( match );
+	public List<Match> getAll(  ){
+		return connection.findAll(Match.class);
 	}
 
 	/**
-	 * @return the dao
+	 * @return the connection
 	 */
-	public MatchDAO getDao() {
-		return dao;
+	public MongoOperations getConnection() {
+		return connection;
 	}
 
 	/**
-	 * @param dao the dao to set
+	 * @param connection the connection to set
 	 */
-	public void setDao(MatchDAO dao) {
-		this.dao = dao;
+	public void setConnection(MongoOperations connection) {
+		this.connection = connection;
+	}
+
+	@Override
+	public Match findById(Match match) {
+		return connection.findById(match.getOid(), Match.class);
 	}
 
 }

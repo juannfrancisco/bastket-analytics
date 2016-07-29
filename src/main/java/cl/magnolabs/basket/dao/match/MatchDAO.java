@@ -14,32 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cl.magnolabs.basket.dao;
+package cl.magnolabs.basket.dao.match;
 
 import java.util.List;
 
-import org.springframework.data.mongodb.core.MongoTemplate;
-
 import cl.magnolabs.basket.core.game.Match;
-import cl.magnolabs.basket.services.ServiceLocator;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-public class MatchDAO {
+public abstract class MatchDAO {
 	
-	
-	public static void save( Match match ){
-		MongoTemplate temp = (MongoTemplate) ServiceLocator.getInstance().getContext().getBean("mongoTemplate");
-		temp.save(match);
-	}
-	
-	
-	public static List<Match> getAll(  ){
-		MongoTemplate temp = (MongoTemplate) ServiceLocator.getInstance().getContext().getBean("mongoTemplate");
-		return temp.findAll( Match.class );
-	}
+	public abstract void save( Match match );
+	public abstract List<Match> getAll(  );
+	public abstract Match findById(Match match);
 
 }

@@ -17,7 +17,6 @@
 package cl.magnolabs.basket.rest;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -26,9 +25,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import cl.magnolabs.basket.core.game.Match;
-import cl.magnolabs.basket.core.game.MatchState;
-import cl.magnolabs.basket.facade.MatchFacade;
+import cl.magnolabs.basket.core.Court;
+import cl.magnolabs.basket.facade.CourtFacade;
 import cl.magnolabs.basket.services.ServiceLocator;
 
 /**
@@ -36,40 +34,37 @@ import cl.magnolabs.basket.services.ServiceLocator;
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-@Path( "matches" )
-public class MatchRest {
-
+@Path( "courts" )
+public class CourtRest {
 	
 	@GET
 	@Produces( MediaType.APPLICATION_JSON )
-	public List<Match> listAll(){
-		//return DataSingleton.getInstance().getMatches();
+	public List<Court> listAllCourts(){
 		return getFacade().getAll();
 	}
-	
-	
-	@PUT
-	@Produces( MediaType.APPLICATION_JSON )
-	public Match add( Match match){
-		match.setOid(UUID.randomUUID().toString());
-		match.setState( MatchState.PENDING );
-		getFacade().save(match);
-		return match;
-	}
-	
 	
 	@GET
 	@Path( "/{oid}" )
 	@Produces( MediaType.APPLICATION_JSON )
-	public Match findById( @PathParam("oid") String oid ){
-		return getFacade().findById(new Match(oid));
+	public Court findById( @PathParam("oid") String oid ){
+		Court court = new Court(oid);
+		return getFacade().getById(court);
 	}
+	
+	@PUT
+	@Produces( MediaType.APPLICATION_JSON )
+	public void addCourt(Court court){
+		getFacade().save(court);
+	}
+	
+	
 	
 	/**
 	 * 
 	 * @return
 	 */
-	private MatchFacade getFacade(){
-		return (MatchFacade)ServiceLocator.getInstance().getBean("match-facade");
+	private CourtFacade getFacade(){
+		return (CourtFacade)ServiceLocator.getInstance().getBean("court-facade");
 	}
+
 }

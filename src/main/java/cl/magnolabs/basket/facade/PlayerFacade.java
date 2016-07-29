@@ -19,7 +19,6 @@ package cl.magnolabs.basket.facade;
 import java.util.List;
 
 import cl.magnolabs.basket.core.Player;
-import cl.magnolabs.basket.core.Team;
 import cl.magnolabs.basket.dao.player.PlayerDAO;
 
 /**

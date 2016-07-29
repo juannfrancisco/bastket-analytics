@@ -10,7 +10,7 @@ app.controller("PlayerCreateController", function( $scope, $http, $location, $ro
 	
 	$scope.save = function(){
 		
-		NProgress.configure({ parent: '#main' });
+//		NProgress.configure({ parent: '#main' });
 		NProgress.start();
 		
 		if( $routeParams.id )

@@ -16,13 +16,66 @@
  */
 package cl.magnolabs.basket.core;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
+@Document( collection="courts" )
 public class Court {
 	
+	@Id
+	private String oid;
 	private String name;
+	private String description;
+	
+	public Court(){
+	}
+	
+	public Court(String oid){
+		this.oid = oid;
+	}
+	
+	/**
+	 * @return the oid
+	 */
+	public String getOid() {
+		return oid;
+	}
+	/**
+	 * @param oid the oid to set
+	 */
+	public void setOid(String oid) {
+		this.oid = oid;
+	}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 }

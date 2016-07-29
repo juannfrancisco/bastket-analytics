@@ -14,51 +14,35 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cl.magnolabs.basket.facade;
+package cl.magnolabs.basket.dao.match;
 
 import java.util.List;
 
 import cl.magnolabs.basket.core.game.Match;
-import cl.magnolabs.basket.dao.match.MatchDAO;
+import cl.magnolabs.basket.services.DataSingleton;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-public class MatchFacade {
-	
-	private MatchDAO dao;
+public class MatchDAODummy extends MatchDAO {
 	
 	public void save( Match match ){
-		dao.save(match);
+		DataSingleton.getInstance().getMatches().add(match);
 	}
 	
 	public List<Match> getAll(  ){
-		return dao.getAll();
-	}
-	
-	/**
-	 * 
-	 * @param match
-	 * @return
-	 */
-	public Match findById( Match match ){
-		return dao.findById( match );
+		return DataSingleton.getInstance().getMatches();
 	}
 
-	/**
-	 * @return the dao
-	 */
-	public MatchDAO getDao() {
-		return dao;
-	}
-
-	/**
-	 * @param dao the dao to set
-	 */
-	public void setDao(MatchDAO dao) {
-		this.dao = dao;
+	@Override
+	public Match findById(Match match) {
+		for(Match t : DataSingleton.getInstance().getMatches() ){
+			if(t.equals( match) )
+				return t;
+		}
+		return null;
 	}
 
 }

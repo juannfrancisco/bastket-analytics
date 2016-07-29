@@ -11,12 +11,12 @@
           http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
  
-	<!--<mongo:mongo host="localhost" port="27017" />
-	<mongo:db-factory dbname="basket" mongo-ref="mongo" /> -->
+	<mongo:mongo host="localhost" port="27017" />
+	<mongo:db-factory dbname="basket" mongo-ref="mongo" /> 
 
-	 <mongo:mongo host="127.2.119.130" port="27017" />
+	 <!--<mongo:mongo host="127.2.119.130" port="27017" />
 	<mongo:db-factory dbname="basket" mongo-ref="mongo" username="admin" password="BNF3hkvZLUsl" />
- 
+ -->
 	<bean id="mongo-connection" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
 	</bean>
@@ -38,5 +38,23 @@
 		<property name="dao" ref="player-dao-db"></property>
 	</bean>
 	
+	
+	<bean id="match-dao-db" class="cl.magnolabs.basket.dao.match.MatchDAODB" >
+		<property name="connection" ref="mongo-connection"></property>
+	</bean>
+	<bean id="match-dao-dummy" class="cl.magnolabs.basket.dao.match.MatchDAODummy" ></bean>
+	<bean id="match-facade" class="cl.magnolabs.basket.facade.MatchFacade" >
+		<property name="dao" ref="match-dao-db"></property>
+	</bean>
+	
+	
+	
+	<bean id="court-dao-db" class="cl.magnolabs.basket.dao.court.CourtDAODB" >
+		<property name="connection" ref="mongo-connection"></property>
+	</bean>
+	<bean id="court-dao-dummy" class="cl.magnolabs.basket.dao.court.CourtDAODummy" ></bean>
+	<bean id="court-facade" class="cl.magnolabs.basket.facade.CourtFacade" >
+		<property name="dao" ref="court-dao-db"></property>
+	</bean>
  
 </beans>

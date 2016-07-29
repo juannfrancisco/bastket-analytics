@@ -108,12 +108,10 @@
 			            </a>
 			            <ul id="teams" class="submenu collapse ">
 			                <li class="submenu-header ellipsis">Equipos</li>
-			                <li>
-			                    <a href="#/teams"><span class="text">Equipos</span></a>
-			                </li>
-			                <li>
-			                    <a href="#/players"><span class="text">Jugadores</span></a>
-			                </li>
+			                <li><a href="#/teams"><span class="text">Equipos</span></a></li>
+			                <li><a href="#/players"><span class="text">Jugadores</span></a></li>
+			                <li><a href="#/players"><span class="text">Partidos</span></a></li>
+			                <li><a href="#/courts"><span class="text">Canchas</span></a></li>
 			            </ul>
 			        </li>
 			        <li>
@@ -137,8 +135,8 @@
         <script type="text/javascript">
         	var CONSTANTS = 
         	{
-        		contextPath : "/basket"
-        		//contextPath :"http://basket-magnolabs.rhcloud.com/"
+        		//contextPath : "/basket"
+        		contextPath :"http://basket-magnolabs.rhcloud.com/"
         	};
         </script>
         <script type="text/javascript" src="../javascript/angular.min.js"></script>
@@ -179,6 +177,11 @@
         <script type="text/javascript" src="../js/controladores/PlayerCreateController.js"></script>
         <script type="text/javascript" src="../js/controladores/PlayerEditController.js"></script>
         <script type="text/javascript" src="../js/controladores/PlayerProfileController.js"></script>
+        
+         <script type="text/javascript" src="../js/controladores/CourtController.js"></script>
+        <script type="text/javascript" src="../js/controladores/CourtCreateController.js"></script>
+        <script type="text/javascript" src="../js/controladores/CourtProfileController.js"></script>
+        
         
         <script type="text/javascript" src="../js/controladores/MatchController.js"></script>
         <script type="text/javascript" src="../js/controladores/MatchPlayingController.js"></script>

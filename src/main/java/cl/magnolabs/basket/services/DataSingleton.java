@@ -19,6 +19,7 @@ package cl.magnolabs.basket.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import cl.magnolabs.basket.core.Court;
 import cl.magnolabs.basket.core.Player;
 import cl.magnolabs.basket.core.Team;
 import cl.magnolabs.basket.core.game.Match;
@@ -34,6 +35,7 @@ public class DataSingleton {
 	private List<Team> teams;
 	private List<Player> players;
 	private List<Match> matches;
+	private List<Court> courts;
 	private static DataSingleton _instance;
 	
 	/**
@@ -43,6 +45,7 @@ public class DataSingleton {
 		teams = new ArrayList<Team>();
 		players = new ArrayList<Player>();
 		matches = new ArrayList<Match>();
+		courts = new ArrayList<Court>();
 	}
 	
 	/**
@@ -100,6 +103,20 @@ public class DataSingleton {
 	 */
 	public void setMatches(List<Match> matches) {
 		this.matches = matches;
+	}
+
+	/**
+	 * @return the courts
+	 */
+	public List<Court> getCourts() {
+		return courts;
+	}
+
+	/**
+	 * @param courts the courts to set
+	 */
+	public void setCourts(List<Court> courts) {
+		this.courts = courts;
 	}
 
 }

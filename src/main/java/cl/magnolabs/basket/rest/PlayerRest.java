@@ -25,9 +25,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import cl.magnolabs.basket.core.Player;
-import cl.magnolabs.basket.core.Team;
 import cl.magnolabs.basket.facade.PlayerFacade;
-import cl.magnolabs.basket.services.DataSingleton;
 import cl.magnolabs.basket.services.ServiceLocator;
 
 /**
