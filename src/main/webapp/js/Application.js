@@ -19,9 +19,11 @@ var app = angular.module('App', ['ui.bootstrap','ngRoute']).config(function($rou
     .when('/players',{controller:'PlayerController',templateUrl:  'pages/players/players.html'})
     .when('/players/create',{controller:'PlayerCreateController',templateUrl:  'pages/teams/team-add-player.html'})
     
+    
     .when('/court/:id',{controller:'CourtProfileController',templateUrl:  'pages/courts/court-profile.html'})
     .when('/courts',{controller:'CourtController',templateUrl:  'pages/courts/courts.html'})
     .when('/courts/create',{controller:'CourtCreateController',templateUrl:  'pages/courts/court-create.html'})
+    .when('/court/edit/:id',{controller:'CourtEditController',templateUrl:  'pages/courts/court-edit.html'})
     
     
     .when('/matches',{controller:'MatchController',templateUrl:  'pages/matches/matches.html'})

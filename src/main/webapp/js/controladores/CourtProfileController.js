@@ -20,6 +20,7 @@ app.controller("CourtProfileController", function($scope, $http, $routeParams)
 		{
 			$scope.court = response;
 			$scope.flagLoading = false;
+			initMap();
 			NProgress.done();
 		} );
 		request.error( function( error )
@@ -32,6 +33,24 @@ app.controller("CourtProfileController", function($scope, $http, $routeParams)
 	
 	
 	$scope.loadData();
+	
+	
+	function initMap() {
+		
+		var location = {lat: $scope.court.location.latitude, lng:  $scope.court.location.longitude };
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: location,
+          scrollwheel: false,
+          zoom: 16
+        });
+        
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: $scope.court.name
+          });
+        
+      }
 	
 	
 	

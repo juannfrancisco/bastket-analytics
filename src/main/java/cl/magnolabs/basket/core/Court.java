@@ -19,6 +19,8 @@ package cl.magnolabs.basket.core;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import cl.magnolabs.basket.core.common.Location;
+
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
@@ -31,6 +33,8 @@ public class Court {
 	private String oid;
 	private String name;
 	private String description;
+	private int spectators;
+	private Location location;
 	
 	public Court(){
 	}
@@ -76,6 +80,34 @@ public class Court {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * @return the location
+	 */
+	public Location getLocation() {
+		return location;
+	}
+
+	/**
+	 * @param location the location to set
+	 */
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	/**
+	 * @return the spectators
+	 */
+	public int getSpectators() {
+		return spectators;
+	}
+
+	/**
+	 * @param spectators the spectators to set
+	 */
+	public void setSpectators(int spectators) {
+		this.spectators = spectators;
 	}
 
 }

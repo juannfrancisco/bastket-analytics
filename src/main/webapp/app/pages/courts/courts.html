@@ -41,13 +41,13 @@
         	
         
         	<div class="col-xs-6 col-sm-3 col-md-2" ng-repeat="e in courts | filter:q as results">
-        		<div class="thumbnail thumbnail-album animation animating  fadeInLeft" ng-click="ref( '/team/'+ e.oid );">
+        		<div class="thumbnail thumbnail-album animation animating  fadeInLeft" ng-click="ref( '/court/'+ e.oid );">
                    <div class="media">
                        <div class="indicator"><span class="spinner"></span></div>
                       	<div class="overlay hidden-xs hidden-sm">
                            <div class="toolbar">
-                               <a href="#/team/{{e.oid}}" class="btn btn-default" title="upload to collection"><i class="ico-eye"></i></a>
-                               <a href="#/team/edit/{{e.oid}}" class="btn btn-success" title="watch collection"><i class="ico-edit"></i></a>
+                               <a href="#/court/{{e.oid}}" class="btn btn-default" title="upload to collection"><i class="ico-eye"></i></a>
+                               <a href="#/court/edit/{{e.oid}}" class="btn btn-success" title="watch collection"><i class="ico-edit"></i></a>
                                <a href="javascript:void(0);" class="btn btn-default" ng-click="eliminar(e)"><i class="ico-remove4"></i></a>
                            </div>
                        </div>
@@ -63,7 +63,7 @@
                </div>
            </div>
            
-			<div class="col-md-12" ng-if="!flagLoading && teams.length == 0">
+			<div class="col-md-12" ng-if="!flagLoading && courts.length == 0">
       			<strong ng-show="!flagErrorLoading">No existen equipos, presione el boton "nuevo" para agregar un equipo...</strong>
 			</div>
 			
