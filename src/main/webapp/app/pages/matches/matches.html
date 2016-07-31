@@ -38,14 +38,17 @@
         <div class="row" >
         		<div class="list-group" >
 	        		<div class="list-group-item" ng-repeat="e in matches | filter:q as results" ng-click="ref('/match/'+ e.oid)">
+	        			<div class="row text-center" style="background: #475577;color: white;padding: 5px;"><i class="ico-calendar"></i> {{e.date | date}}</div>
 	        			<div class="row" >
-		        			<div class="col-md-6 col-xs-6 text-center">
-		        				<div>Equipo Local</div>
-		        				<div style="font-weight: bold;" >{{e.local.name}}</div>
+		        			<div class="col-md-4 col-xs-4 text-center">
+		        				<div><img ng-src="../image/icons/teams-default4.png" style="width:70px;"/></div>
+		        				<div class="fsize11" >{{e.local.name}}</div>
 		        			</div>
-		        			<div class="col-md-6 col-xs-6 text-center">
-		        				<div>Equipo Visitante</div>
-		        				<div style="font-weight: bold;">{{e.visitor.name}}</div>
+		        			<div class="col-md-2 col-xs-2 text-right fsize32 pt20 pr5 pl0">{{e.scoreLocal}}</div>
+		        			<div class="col-md-2 col-xs-2 text-left fsize32 pt20  pr0 pl5">{{e.scoreVisitor}}</div>
+		        			<div class="col-md-4 col-xs-4 text-center">
+		        				<div><img ng-src="../image/icons/teams-default4.png" style="width:70px;"/></div>
+		        				<div class="fsize11" >{{e.visitor.name}}</div>
 		        			</div>
 	        			</div>
 	        		</div>

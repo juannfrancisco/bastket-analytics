@@ -56,5 +56,14 @@
 	<bean id="court-facade" class="cl.magnolabs.basket.facade.CourtFacade" >
 		<property name="dao" ref="court-dao-db"></property>
 	</bean>
+	
+	
+	<bean id="championship-dao-db" class="cl.magnolabs.basket.dao.championship.ChampionshipDAODB" >
+		<property name="connection" ref="mongo-connection"></property>
+	</bean>
+	<bean id="championship-dao-dummy" class="cl.magnolabs.basket.dao.championship.ChampionshipDAODummy" ></bean>
+	<bean id="championship-facade" class="cl.magnolabs.basket.facade.ChampionshipFacade" >
+		<property name="dao" ref="championship-dao-db"></property>
+	</bean>
  
 </beans>

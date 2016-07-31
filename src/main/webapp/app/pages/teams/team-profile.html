@@ -1,26 +1,33 @@
 <section id="main" role="main" >
 	<div class="container-fluid">
 <div ng-show="!flagLoading" >
-	<section class="jumbotron jumbotron-bg11 mt-15 mb15 mr-15 ml-15" data-stellar-background-ratio="0.4" 
-		style="min-height: 320px; background-position: 50% 30px; background-image: url('../image/stellar/background8.jpg') !important; ">
+	<section class="jumbotron jumbotron-bg11 mt-15 mb0 mr-15 ml-15" data-stellar-background-ratio="0.4" 
+		style="min-height: 320px;background-image: url('../image/stellar/background8.jpg') !important; ">
 		    <div class="overlay pattern pattern10"></div>
-		    <div class="container" style="padding-top:8%;">
+		    <div class="container">
+		    		
+		    		<div class="row hidden-sm hidden-md hidden-lg pt15">
+					<div class="col-md-3 col-xs-3 pl15" >
+		           		<a href="#/teams" class="btn btn-primary btn-outline mb5">Volver</a>
+		            	</div>
+		            	<div class="col-md-6 col-xs-6" >
+		            		<h4 class="title semibold"></h4>
+		            	</div>
+		            	<div class="col-md-3 col-xs-3" >
+		            		<a href="#/team/edit/{{team.oid}}" class="btn btn-primary btn-outline mb5">Editar</a>
+		            	</div>
+		         </div>
+		    		
 		        <div style="margin: auto; width: 150px;">
 		        		<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" 
-                       	 alt="Cover" width="150px" class="unveiled img-rounded" ></div>
-                       	 
-                <h1 class="thin text-white text-center font-alt">{{team.name}}</h1>
-		        <!-- h4 class="thin text-white text-center">Cantidad de jugadores {{team.playeers.length}}</h4-->
-		        
-		        <!-- <div class="text-center pt15">
-		            <a href="#/team/edit/{{team.oid}}" class="btn btn-primary btn-block">Editar <i class=" ico-edit-sign"></i></a>
-		        </div> -->
-		        
+                       	 alt="Cover" width="150px" class="unveiled img-rounded" >
+				</div>
+				<h1 class="thin text-white text-center font-alt">{{team.name}}</h1>
 		    </div>
 	</section>
     
     
-        <div class="page-header page-header-block mb0">
+        <div class="page-header page-header-block mb0  hidden-xs hidden-sm">
             <div class="page-header-section">
                 <h4 class="title semibold hidden-xs hidden-sm">{{team.name}}</h4>
             </div>
@@ -124,7 +131,3 @@
         </div>
 	</div>
 </section>
-        <script>
-$.stellar({horizontalScrolling: false});
-</script>
-

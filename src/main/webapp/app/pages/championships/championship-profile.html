@@ -8,17 +8,17 @@
 		    		
 		    		<div class="row hidden-sm hidden-md hidden-lg pt15">
 					<div class="col-md-3 col-xs-3 pl15" >
-		           		<a href="#/courts" class="btn btn-primary btn-outline mb5">Volver</a>
+		           		<a href="#/{{nameObjects}}" class="btn btn-primary btn-outline mb5">Volver</a>
 		            	</div>
 		            	<div class="col-md-6 col-xs-6" >
 		            		<h4 class="title semibold"></h4>
 		            	</div>
 		            	<div class="col-md-3 col-xs-3" >
-		            		<a href="#/court/edit/{{court.oid}}" class="btn btn-primary btn-outline mb5">Editar</a>
+		            		<a href="#/{{nameObject}}/edit/{{object.oid}}" class="btn btn-primary btn-outline mb5">Editar</a>
 		            	</div>
 		         </div>
 		    		<div class="pt20">
-		    			<h1 class="thin text-white text-center font-alt">{{court.name}}</h1>
+		    			<h1 class="thin text-white text-center font-alt">{{object.name}}</h1>
 	                <div class="text-center fsize24">
 	                		<span uib-rating ng-model="rate" max="5" read-only="true" aria-labelledby="default-rating"></span>
 	                </div>
@@ -27,19 +27,19 @@
 	</section>
     
     
-    <div class="page-header page-header-block mb0 hidden-xs hidden-sm">
-        <div class="page-header-section">
-            <h4 class="title semibold hidden-xs hidden-sm">{{court.name}}</h4>
-        </div>
-        <div class="page-header-section">
-            <div class="toolbar">
-                <ol class="breadcrumb breadcrumb-transparent nm">
-                    <li><a href="#/">Home</a></li>
-                    <li><a href="#/courts">Todas las canchas</a></li>
-                </ol>
+        <div class="page-header page-header-block mb0 hidden-xs hidden-sm">
+            <div class="page-header-section">
+                <h4 class="title semibold">{{object.name}}</h4>
+            </div>
+            <div class="page-header-section">
+                <div class="toolbar">
+                    <ol class="breadcrumb breadcrumb-transparent nm">
+                        <li><a href="#/">Home</a></li>
+                        <li><a href="#/{{nameObjects}}">Campeonatos</a></li>
+                    </ol>
+                </div>
             </div>
         </div>
-    </div>
 	
 		        
         <div class="row" >
@@ -58,7 +58,7 @@
 					
 					<div class="row pt15 pr15 pl15">
 						<div class="col-md-12 text-justify">
-							<p>{{court.description}} </p>
+							<p>{{object.description}} </p>
 						</div>
 					</div><hr/>
 					<div class="row mb15 mt15 pr15 pl15">

@@ -22,6 +22,7 @@ import java.util.List;
 import cl.magnolabs.basket.core.Court;
 import cl.magnolabs.basket.core.Player;
 import cl.magnolabs.basket.core.Team;
+import cl.magnolabs.basket.core.championship.Championship;
 import cl.magnolabs.basket.core.game.Match;
 
 
@@ -36,6 +37,8 @@ public class DataSingleton {
 	private List<Player> players;
 	private List<Match> matches;
 	private List<Court> courts;
+	private List<Championship> championships;
+	
 	private static DataSingleton _instance;
 	
 	/**
@@ -46,6 +49,7 @@ public class DataSingleton {
 		players = new ArrayList<Player>();
 		matches = new ArrayList<Match>();
 		courts = new ArrayList<Court>();
+		championships=  new ArrayList<Championship>();
 	}
 	
 	/**
@@ -117,6 +121,20 @@ public class DataSingleton {
 	 */
 	public void setCourts(List<Court> courts) {
 		this.courts = courts;
+	}
+
+	/**
+	 * @return the championships
+	 */
+	public List<Championship> getChampionships() {
+		return championships;
+	}
+
+	/**
+	 * @param championships the championships to set
+	 */
+	public void setChampionships(List<Championship> championships) {
+		this.championships = championships;
 	}
 
 }

@@ -2,20 +2,25 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador PerfilEquipoController
  *************************************************************/
-app.controller("CourtController", function($scope, $http, $location, GenericService){
+app.controller("ChampionshipEditController", function($scope, $http, $routeParams, GenericService)
+{
+	$scope.title = "Campeonatos";
+	$scope.nameObject = "championship";
+	$scope.nameObjects = "championships";
 	
 	
-	$scope.players = [];
 	$scope.flagLoading = false;
 	$scope.flagErrorLoading = false;
 	
+	/**
+	 * 
+	 */
 	$scope.loadData = function(  )
 	{
 		$scope.flagLoading = true;
 		NProgress.start();
-		
-		GenericService.getAll("courts").then(function(data) {
-			$scope.courts = data;
+		GenericService.getById( $scope.nameObjects, $routeParams.id ).then(function(data) {
+			$scope.object = data;
 			$scope.flagLoading = false;
 			NProgress.done();
         })
@@ -25,26 +30,7 @@ app.controller("CourtController", function($scope, $http, $location, GenericServ
 			NProgress.done();
         });
 		
-		
-		
-		
-//		var request = 
-//		$http.get( CONSTANTS.contextPath + "/services/courts" );
-//		request.success( function( response )
-//		{
-//			$scope.courts = response;
-//			$scope.flagLoading = false;
-//			NProgress.done();
-//		} );
-//		request.error( function( error )
-//		{
-//			$scope.flagLoading = false;
-//			$scope.flagErrorLoading = true;
-//			NProgress.done();
-//		});
 	};
 	
-	$scope.loadData();
-	
-	
+	$scope.loadData();	
 });

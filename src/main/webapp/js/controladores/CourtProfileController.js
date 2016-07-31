@@ -11,7 +11,6 @@ app.controller("CourtProfileController", function($scope, $http, $routeParams)
 	$scope.loadData = function(  )
 	{
 		$scope.flagLoading = true;
-//		NProgress.configure({ parent: '#main' });
 		NProgress.start();
 		
 		var request = 

@@ -11,6 +11,9 @@
 }
 /* Font Size
 -------------------------------*/
+.fsize11 {
+  font-size: 11px !important;
+}
 .fsize13 {
   font-size: 13px !important;
 }

@@ -43,7 +43,7 @@ public class Match {
 	
 	private int scoreVisitor;
 	private int scoreLocal;
-	
+	@DBRef
 	private Court court;
 	private Referee referee;
 	
