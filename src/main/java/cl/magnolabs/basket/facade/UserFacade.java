@@ -14,74 +14,52 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cl.magnolabs.basket.core.administration;
+package cl.magnolabs.basket.facade;
 
-import org.springframework.data.annotation.Id;
+import java.util.List;
+
+import cl.magnolabs.basket.core.administration.User;
+import cl.magnolabs.basket.dao.administration.UserDAO;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-public class User {
+public class UserFacade {
+
+	private UserDAO dao;
 	
-	@Id
-	private String name;
-	private String email;
-	private String password;
-	
-	
-	public User(String name){
-		this.setName(name);
-	}
-
-
 	/**
-	 * @return the name
+	 * @param team
 	 */
-	public String getName() {
-		return name;
-	}
-
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
-
-
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void save( User user ){
+		dao.save(user);
 	}
 	
+	public List<User> getAll(  ){
+		return dao.getAll();
+	}
+	
+	public User getById( User user ){
+		return dao.getByID(user);
+	}
+	
+	
+
+	/**
+	 * @return the dao
+	 */
+	public UserDAO getDao() {
+		return dao;
+	}
+
+	/**
+	 * @param dao the dao to set
+	 */
+	public void setDao(UserDAO dao) {
+		this.dao = dao;
+	}
+		
 	
 }

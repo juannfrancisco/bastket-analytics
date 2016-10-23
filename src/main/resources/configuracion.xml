@@ -65,5 +65,14 @@
 	<bean id="championship-facade" class="cl.magnolabs.basket.facade.ChampionshipFacade" >
 		<property name="dao" ref="championship-dao-db"></property>
 	</bean>
+	
+	
+	
+	<bean id="user-dao-db" class="cl.magnolabs.basket.dao.administration.UserDAODB" >
+		<property name="connection" ref="mongo-connection"></property>
+	</bean>
+	<bean id="user-facade" class="cl.magnolabs.basket.facade.UserFacade" >
+		<property name="dao" ref="user-dao-db"></property>
+	</bean>
  
 </beans>

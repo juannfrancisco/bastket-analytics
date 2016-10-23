@@ -14,74 +14,44 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cl.magnolabs.basket.core.administration;
+package cl.magnolabs.basket.dao.administration;
 
-import org.springframework.data.annotation.Id;
+import java.util.List;
+
+import cl.magnolabs.basket.core.administration.User;
+import cl.magnolabs.basket.core.championship.Championship;
+import cl.magnolabs.basket.services.DataSingleton;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-public class User {
-	
-	@Id
-	private String name;
-	private String email;
-	private String password;
-	
-	
-	public User(String name){
-		this.setName(name);
+public class UserDAODummy extends UserDAO {
+
+	@Override
+	public void save(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<User> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getByID(User user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
-
-
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	
 }
