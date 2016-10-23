@@ -34,7 +34,7 @@ import cl.magnolabs.basket.services.ServiceLocator;
  * Magno Labs - Santiago de Chile
  * Estadisticas de Deportes - Basketball
  */
-@Path( "championships" )
+@Path( "users" )
 public class UserRest {
 	
 	@GET
