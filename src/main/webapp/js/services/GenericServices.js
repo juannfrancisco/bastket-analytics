@@ -1,14 +1,14 @@
 /*************************************************************
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
- * @desc Servicio Generico para invocacion de Servicios Rest 
+ * @desc Servicio Generico para invocacion de Servicios Rest
  *************************************************************/
-app.service('GenericService', function($http, $q){
-	
+app.service('GenericService', ['$http', '$q',function($http, $q){
+
 	var path = CONSTANTS.contextPath + "/services/";
-	
-	
+
+
 	/**
-	 * 
+	 *
 	 */
 	this.getAll = function( nameObjects ){
 		var defered = $q.defer();
@@ -24,10 +24,10 @@ app.service('GenericService', function($http, $q){
 		});
 		return promise;
 	};
-	
-	
+
+
 	/**
-	 * 
+	 *
 	 */
 	this.save = function( nameObjects, object ){
 		var defered = $q.defer();
@@ -43,12 +43,12 @@ app.service('GenericService', function($http, $q){
 		});
 		return promise;
 	};
-	
-	
-	
-	
+
+
+
+
 	/**
-	 * 
+	 *
 	 */
 	this.getById = function( nameObjects, oid ){
 		var defered = $q.defer();
@@ -64,5 +64,5 @@ app.service('GenericService', function($http, $q){
 		});
 		return promise;
 	};
-	
-});
+
+}]);

@@ -2,24 +2,25 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador PerfilEquipoController
  *************************************************************/
-app.controller("CourtCreateController", function( $scope, $http, $location, $routeParams )
+app.controller("CourtCreateController",[ '$scope', '$http', '$location', '$routeParams',
+ function( $scope, $http, $location, $routeParams )
 {
 	$scope.player = {};
 	$scope.oid = $routeParams.id;
-	
-	
+
+
 	$scope.save = function(){
-		
+
 //		NProgress.configure({ parent: '#main' });
 		NProgress.start();
-		
+
 		var request = $http.put( CONSTANTS.contextPath + "/services/courts/", $scope.court );
-		
+
 		request.success( function( response )
 		{
 			NProgress.done();
 			$location.path('/courts/' );
-				
+
 		});
 		request.error( function( error )
 		{
@@ -29,5 +30,5 @@ app.controller("CourtCreateController", function( $scope, $http, $location, $rou
 			NProgress.done();
 		});
 	};
-	
-});
+
+}]);

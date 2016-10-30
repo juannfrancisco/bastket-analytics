@@ -1,9 +1,9 @@
 /*************************************************************
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
- * @desc Controlador 
+ * @desc Controlador
  *************************************************************/
-app.controller("MatchCreateController", function($scope, $http, $location , GenericService ){
-	
+app.controller("MatchCreateController", ['$scope', '$http', '$location' , 'GenericService',function($scope, $http, $location , GenericService ){
+
 	$scope.match = {};
 	$scope.teams = [];
 	$scope.flagLoading = false;
@@ -15,33 +15,33 @@ app.controller("MatchCreateController", function($scope, $http, $location , Gene
 		    startingDay: 1
 	};
 
-	
-	
+
+
 	$scope.loadData = function(  )
 	{
 		$scope.flagLoading = true;
 		NProgress.start();
-		
-		GenericService.getAll("courts").then(function(data){ 
+
+		GenericService.getAll("courts").then(function(data){
 			$scope.courts = data;
-		}).then(  GenericService.getAll("teams").then(function(data){ 
+		}).then(  GenericService.getAll("teams").then(function(data){
 			$scope.teams = data;
 			$scope.flagLoading = false;
 			NProgress.done();
 		}));
-		
-		
+
+
 	};
-	
-	
-	
-	
+
+
+
+
 //	$scope.loadData = function(  )
 //	{
 //		$scope.flagLoading = true;
 //		NProgress.start();
-//		
-//		var request = 
+//
+//		var request =
 //		$http.get( CONSTANTS.contextPath + "/services/teams" );
 //		request.success( function( response )
 //		{
@@ -56,12 +56,12 @@ app.controller("MatchCreateController", function($scope, $http, $location , Gene
 //			NProgress.done();
 //		});
 //	};
-	
-	
-	
+
+
+
 	$scope.save = function(){
 		NProgress.start();
-		
+
 		var request = $http.put( CONSTANTS.contextPath + "/services/matches", $scope.match );
 		request.success( function( response )
 		{
@@ -77,8 +77,8 @@ app.controller("MatchCreateController", function($scope, $http, $location , Gene
 			NProgress.done();
 		});
 	};
-	
+
 	$scope.loadData();
-	
-	
-});
+
+
+}]);

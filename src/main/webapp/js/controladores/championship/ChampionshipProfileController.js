@@ -2,19 +2,19 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador PerfilEquipoController
  *************************************************************/
-app.controller("ChampionshipProfileController", function($scope, $http, $routeParams, GenericService)
-{	
+app.controller("ChampionshipProfileController", ['$scope', '$http', '$routeParams', 'GenericService', function($scope, $http, $routeParams, GenericService)
+{
 	$scope.nameObject = "championship";
 	$scope.nameObjects = "championships";
-	
+
 	$scope.flagLoading = true;
 	$scope.flagErrorLoading = false;
 	$scope.object = {};
-	
-	
-	
+
+
+
 	/**
-	 * 
+	 *
 	 */
 	$scope.loadData = function(  )
 	{
@@ -31,6 +31,6 @@ app.controller("ChampionshipProfileController", function($scope, $http, $routePa
 			NProgress.done();
         });
 	};
-	
+
 	$scope.loadData();
-});
+}]);

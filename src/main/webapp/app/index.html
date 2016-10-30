@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="App" class="backend">
+<html data-ng-app="App" class="backend">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +28,7 @@
         
     </head>
     
-    <body ng-controller="MainController" >
+    <body data-ng-controller="MainController" >
         
         
         <header id="header" class="navbar">
@@ -125,7 +125,7 @@
 		    </section>
 		</aside>
        
-       	<section id="main" role="main" ng-view></section>
+       	<section id="main" role="main" data-ng-view></section>
        
        
         <!-- section id="main" role="main" >
@@ -141,23 +141,31 @@
         	};
         </script>
         
-         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB94UIYV8GVbfwhGGh75mt1-cE8xZcIkLY" defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB94UIYV8GVbfwhGGh75mt1-cE8xZcIkLY" defer></script>
+       	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+       	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.min.js"></script>
+   		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.min.js"></script>
+   		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-touch.min.js"></script>
+   		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
+   		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.min.js"></script>
+       	
+       	<!-- USO de CDNS -->
+       	<!--	
+       	<script type="text/javascript" src="../javascript/angular.min.js"></script>
+       	<script type="text/javascript" src="../javascript/angular-resource.min.js"></script>
+   		<script type="text/javascript" src="../javascript/angular-route.min.js"></script>
+   		<script type="text/javascript" src="../javascript/angular-touch.min.js"></script>
+   		<script type="text/javascript" src="../javascript/angular-animate.min.js"></script>
+   		<script type="text/javascript" src="../javascript/ui-bootstrap-tpls-1.3.3.js"></script>
+   		-->
+   		
+   		<script type="text/javascript" src="../javascript/angular-locale_es-cl.js"></script>
+   		<script type="text/javascript" src="../javascript/locale.js"></script>
+    		
+    		
         
-        <script type="text/javascript" src="../javascript/angular.min.js"></script>
-        <script type="text/javascript" src="../javascript/angular-resource.min.js"></script>
-    		<script type="text/javascript" src="../javascript/angular-route.min.js"></script>
-    		<script type="text/javascript" src="../javascript/angular-touch.min.js"></script>
-    		<script type="text/javascript" src="../javascript/angular-animate.min.js"></script>
-    		<script type="text/javascript" src="../javascript/ui-bootstrap-tpls-1.3.3.js"></script>
     		
     		
-    		<script type="text/javascript" src="../javascript/angular-locale_es-cl.js"></script>
-    		<script type="text/javascript" src="../javascript/locale.js"></script>
-    		
-    		
-        <!-- Descomentar si ambiente tiene conexion a internet -->
-        <!-- script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.min.js"></script>
-    		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.min.js"></script-->
         <script type="text/javascript" src="../javascript/vendor.js"></script>
         <script type="text/javascript" src="../javascript/core.js"></script>
         <script type="text/javascript" src="../javascript/backend/app.js"></script>
@@ -171,8 +179,15 @@
         <script type="text/javascript" src="../plugins/bootbox/js/bootbox.js"></script>
         <script type="text/javascript" src="../plugins/gritter/js/jquery.gritter.js"></script>
         
+        
+        <!-- Minify resources -->
+        
+        <script type="text/javascript" src="../js/Application.min.js"></script>
+        
+        <!-- 
         <script type="text/javascript" src="../js/Application.js"></script>
         <script type="text/javascript" src="../js/services/GenericServices.js"></script>
+        
         <script type="text/javascript" src="../js/controladores/MainController.js"></script>
         <script type="text/javascript" src="../js/controladores/TeamController.js"></script>
         <script type="text/javascript" src="../js/controladores/TeamProfileController.js"></script>
@@ -183,7 +198,7 @@
         <script type="text/javascript" src="../js/controladores/PlayerEditController.js"></script>
         <script type="text/javascript" src="../js/controladores/PlayerProfileController.js"></script>
         
-         <script type="text/javascript" src="../js/controladores/CourtController.js"></script>
+        <script type="text/javascript" src="../js/controladores/CourtController.js"></script>
         <script type="text/javascript" src="../js/controladores/CourtCreateController.js"></script>
         <script type="text/javascript" src="../js/controladores/CourtProfileController.js"></script>
         <script type="text/javascript" src="../js/controladores/CourtEditController.js"></script>
@@ -202,9 +217,10 @@
          <script type="text/javascript" src="../javascript/data/ComunaProvincia.js"></script>
          <script type="text/javascript" src="../javascript/data/ProvinciaRegion.js"></script>
          <script type="text/javascript" src="../javascript/data/Regiones.js"></script>
+         -->
          <script type="text/javascript" src="../javascript/data/utilRegiones.js"></script>
          
-        
+         
     </body>
     <!--/ END Body -->
 </html>

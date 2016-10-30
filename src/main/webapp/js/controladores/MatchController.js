@@ -2,20 +2,20 @@
  * @author Juan Francisco ( juan.maldonado.leon@gmail.com )
  * @desc Controlador PerfilEquipoController
  *************************************************************/
-app.controller("MatchController", function($scope, $http, $location){
-	
-	
+app.controller("MatchController", ['$scope', '$http', '$location',function($scope, $http, $location){
+
+
 	$scope.matches = [];
 	$scope.flagLoading = false;
 	$scope.flagErrorLoading = false;
-	
+
 	$scope.loadData = function(  )
 	{
 		$scope.flagLoading = true;
 //		NProgress.configure({ parent: '#main' });
 		NProgress.start();
-		
-		var request = 
+
+		var request =
 		$http.get( CONSTANTS.contextPath + "/services/matches" );
 		request.success( function( response )
 		{
@@ -30,8 +30,8 @@ app.controller("MatchController", function($scope, $http, $location){
 			NProgress.done();
 		});
 	};
-	
+
 	$scope.loadData();
-	
-	
-});
+
+
+}]);
