@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Auth">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blur Admin</title>
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic" rel="stylesheet" type="text/css">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96x96.png">
+<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+<link rel="stylesheet" href="css/vendor.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body ng-controller="AuthController" >
+
+  <main class="auth-main" ng-show="!showMainPage">
+    <div class="auth-block">
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percentage}}%">
+          <span>{{percentage}}% Complete</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <main class="auth-main" ng-show="showError">
+    <div class="auth-block">
+      <div class="alert alert-danger" role="alert">Usuario y/o password incorrectos</div>
+    </div>
+  </main>
+
+	<main class="auth-main" ng-show="showMainPage && !showError">
+	<div class="auth-block">
+		<h1>Sign in to Blur Admin</h1>
+		<form class="form-horizontal">
+			<div class="form-group">
+
+				<div class="col-sm-12">
+					<input type="email" class="form-control" id="inputEmail3" ng-focus="sound1.play()"
+						placeholder="Email">
+				</div>
+			</div>
+			<div class="form-group">
+
+				<div class="col-sm-12">
+					<input type="password" class="form-control" id="inputPassword3" ng-focus="sound1.play()"
+						placeholder="Password">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<button type="submit" class="btn btn-block btn-default btn-auth" ng-click="login()" ng-mouseover="sound1.play()">Sign in</button>
+				</div>
+			</div>
+		</form>
+
+    <audio src="assets/audio/electrical-device-beep.mp3"></audio>
+    <audio src="assets/audio/electrical-device-beep-error.mp3"></audio>
+    <audio src="assets/audio/key.mp3"></audio>
+
+	</div>
+	</main>
+
+  <script type="text/javascript" src="bower_components/angular/angular.min.js" ></script>
+  <script type="text/javascript" src="assets/js/angular.audio.js" ></script>
+  <script type="text/javascript">
+
+  angular.module('Auth',['ngAudio'])
+  .controller("AuthController",function($scope,ngAudio, $interval, $timeout){
+      $scope.showMainPage = false;
+      $scope.percentage = 0;
+      $scope.showError = false;
+
+      /**
+      *
+      */
+      $scope.initialize = function(){
+        $scope.sound4 = ngAudio.load("assets/audio/load.mp3"); // returns NgAudioObject
+        $scope.sound4.play();
+        $scope.loadAudio();
+
+        stop = $interval(function() {
+            $scope.percentage = $scope.percentage + 20;
+            if( $scope.percentage == 100 || $scope.percentage > 100 ){
+                $scope.sound4.stop();
+                $interval.cancel(stop);
+                $scope.showMainPage = true;
+            }
+          }, 900);
+      };
+
+      /**
+      *
+      */
+      $scope.login = function(){
+        $scope.showError = true;
+        $scope.sound2.play();
+        $timeout( function(){ $scope.showError = false; }, 900 );
+      };
+
+
+      /**
+      *
+      */
+      $scope.loadAudio = function (){
+        $scope.sound1 = ngAudio.load("assets/audio/electrical-device-beep.mp3"); // returns NgAudioObject
+        $scope.sound2 = ngAudio.load("assets/audio/electrical-device-beep-error.mp3"); // returns NgAudioObject
+        $scope.sound3 = ngAudio.load("assets/audio/beep-blip-high-tech2.mp3"); // returns NgAudioObject
+      };
+
+      $scope.initialize();
+  })
+
+
+  </script>
+</body>
+</html>
