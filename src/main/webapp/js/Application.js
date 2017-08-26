@@ -16,6 +16,7 @@ app.config(['$routeProvider', '$controllerProvider',function($routeProvider, $co
     .when('/team/:id',{controller:'TeamProfileController',templateUrl:  'pages/teams/team-profile.html'})
     .when('/team/edit/:id',{controller:'TeamEditController',templateUrl:  'pages/teams/team-edit.html'})
     .when('/team/edit/:id/photo',{controller:'TeamEditController',templateUrl:  'pages/teams/team-edit-photo.html'})
+    .when('/team/:id/players',{controller:'TeamPlayersController',templateUrl:  'pages/players/team-players.html'})
     .when('/team/:id/players/add',{controller:'PlayerCreateController',templateUrl:  'pages/teams/team-add-player.html'})
     .when('/team/:id/players/:idPlayer/edit',{controller:'PlayerEditController',templateUrl:  'pages/teams/team-edit-player.html'})
 

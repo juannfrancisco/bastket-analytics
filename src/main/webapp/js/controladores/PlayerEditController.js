@@ -19,6 +19,7 @@ app.controller("PlayerEditController", ['$scope', '$http', '$routeParams',functi
 		request.success( function( response )
 		{
 			$scope.player = response;
+			$scope.player.birthdate = new Date($scope.player.birthdate);
 			$scope.flagLoading = false;
 			NProgress.done();
 		} );

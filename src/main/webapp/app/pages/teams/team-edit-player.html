@@ -15,8 +15,12 @@
 	    </div>
 	</div>
 	<div class="row">
-	<div class="col-md-6" style="border-right:1px solid #e0e7e8;">
+	<div class="col-md-6 col-md-offset-3" style="border:1px solid #e0e7e8;">
 		<form class="form-horizontal form-bordered" id="form-crear-equipo">
+			<div class="form-group text-center">
+                 <h4 class="title semibold">Ingrese los datos del Jugador</h4>
+             </div>
+			
 			<div class="form-group">
                  <label class="col-sm-3 control-label">Nombres</label>
                  <div class="col-sm-9">
@@ -30,6 +34,14 @@
                  <div class="col-sm-9">
                      <input type="text" class="form-control" ng-model="player.lastName"
                      data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese el apellido del jugador" data-parsley-required>
+                 </div>
+             </div>
+             
+              <div class="form-group">
+                 <label class="col-sm-3 control-label">Fecha de Nacimiento</label>
+                 <div class="col-sm-9">
+                     <input type="date" class="form-control" ng-model="player.birthdate"
+                     data-parsley-errors-container="#error-container" data-parsley-error-message="ingrese la fecha de naciemto" data-parsley-required>
                  </div>
              </div>
              

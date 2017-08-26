@@ -20,6 +20,7 @@ app.controller("PlayerProfileController", ['$scope', '$http', '$routeParams',
 		request.success( function( response )
 		{
 			$scope.player = response;
+			$scope.player.age = $scope.getAge( $scope.player.birthdate );
 			$scope.flagLoading = false;
 			NProgress.done();
 		} );
@@ -29,6 +30,12 @@ app.controller("PlayerProfileController", ['$scope', '$http', '$routeParams',
 			$scope.flagLoading = false;
 			NProgress.done();
 		});
+	};
+	
+	$scope.getAge = function( birthdate ){
+		var birthdatex = new Date(birthdate);
+		var date = new Date();
+		return date.getFullYear() - birthdatex.getFullYear();
 	};
 
 
