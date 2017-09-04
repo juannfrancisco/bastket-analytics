@@ -6,12 +6,43 @@
 			    <div class="overlay pattern pattern10"></div>
 			    <div class="container" >
 			    		<div class="match-profile-header row mt20 mb20" >
-			    			<div class="team col-xs-6 text-center" >
+			    			<div class="team col-xs-6 col-md-4 text-center" >
 			    				<div class="locale">Local</div>
 			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" width="120px" alt="Cover" class="unveiled img-rounded">
 	                       	 <div class="name">{{match.local.name}}</div>
 			    			</div>
-			    			<div class="team col-xs-6 text-center" >
+			    			<div class="col-md-4 col-xs-12 text-center hidden-xs hidden-sm"> 
+								<div class="widget panel">
+		                            <div class="panel-body"  ng-class="{'bgcolor-success':stateWatch=='play', 'bgcolor-warning':stateWatch=='pause', 'bgcolor-default':stateWatch=='stop' }" >
+		                                <ul class="list-unstyled mt15 mb15">
+		                                    <li class="text-center fsize24">
+		                                        <i class="ico-clock2"></i> {{timetext}}
+		                                    </li>
+		                                    <li class="text-center">
+		                                        <h5 class="semibold mb0">1er Cuarto</h5>
+		                                        <span>--</span>
+		                                    </li>
+		                                </ul>
+		                            </div>
+		                            <div class="panel-body">
+		                            	<div class="btn-group" role="group">
+										  <button type="button" class="btn btn-default" ng-click="startCount()" ng-disabled="stateWatch=='play'">
+										  	<h5 class="nm"><i class="ico-play3"></i></h5>
+		                                  	<p class="nm">Iniciar</p>
+										  </button>
+										  <button type="button" class="btn btn-default" ng-click="pauseCount()" ng-disabled="stateWatch=='pause' || stateWatch=='stop'">
+										  	<h5 class="nm"><i class="ico-pause"></i></h5>
+ 		                                    <p class="nm">Pausar</p> 
+										  </button>
+										  <button type="button" class="btn btn-default" ng-click="stopCount()" ng-disabled="stateWatch=='stop'">
+										  	<h5 class="nm"><i class="ico-stop"></i></h5>
+                                           	<p class="nm">Detener</p>
+										  </button>
+										</div>
+		                            </div>
+		                        </div>
+							</div>
+			    			<div class="team col-xs-6 col-md-4 text-center" >
 			    				<div class="locale" >Visita</div>
 			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" width="120px" alt="Cover" class="unveiled img-rounded">
 	                       	 <div class="name">{{match.visitor.name}}</div>
@@ -21,88 +52,121 @@
 			</section>
 			
 			<div class="row" >
-					<ul class="nav nav-tabs nav-justified">
-					  <li role="presentation" class="active">
-					  	<a data-toggle="tab" aria-expanded="true" data-target="#1quarter">1 cto</a></li>
-					  <li role="presentation">
-					  	<a data-toggle="tab" aria-expanded="true" data-target="#2quarter">2 cto</a></li>
-					  <li role="presentation">
-					  	<a data-toggle="tab" aria-expanded="true" data-target="#3quarter">3 cto</a></li>
-					  <li role="presentation">
-					  	<a data-toggle="tab" aria-expanded="true" data-target="#4quarter">4 cto</a></li>
-					</ul>
-					
-					<div class="tab-content panel" >
-						<div class="tab-pane np pt15 pb15 pl15 pr15 mh400 active" id="1quarter" >
-								<div ng-show="match.state=='PENDING'" >
-									
-									<div class="row pb15" style="border-bottom:1px solid #EBEBEB;" >
-							        	 	<div class="col-xs-6 text-center fsize24">
-							        	 		<i class=" ico-seven-segment{{scoreText.local.d1}}" ></i>
-							        	 		<i class=" ico-seven-segment{{scoreText.local.d2}}" ></i>
-							        	 		<i class=" ico-seven-segment{{scoreText.local.d3}}" ></i> 
-							        	 	</div>
-							        	 	<div class="col-xs-6 text-center fsize24"> 
-							        	 		<i class=" ico-seven-segment{{scoreText.visitor.d1}}" ></i>
-							        	 		<i class=" ico-seven-segment{{scoreText.visitor.d2}}" ></i>
-							        	 		<i class=" ico-seven-segment{{scoreText.visitor.d3}}" ></i>
-							        	 	</div>
-							        	 </div>
-								
-							        	 <div class="row pb15 pt15" style="border-bottom:1px solid #EBEBEB;" >
-										<div class="col-xs-12 text-center fsize24"> <i class="ico-clock2"></i> {{timetext}}</div>
-							        	</div>
-							        	
-							        	<div class="menu-match row pl10 pr10 pt10  pb15" style="border-bottom:1px solid #EBEBEB;" >
-							        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
-							        			<button type="button" class="btn btn-primary btn-block btn-outline mb5">
-							        				<i class="ico-group"></i>
-							        				<div>Formacion</div>
-							        			</button>
-							        		</div>
-							        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
-							        			<button type="button" class="btn btn-primary btn-block btn-outline mb5"
-							        				 data-target="#modal-add-point" data-toggle="modal" >
-								        			<i class="ico-screenshot"></i>
-								        			<div>Punto</div>
-							        			</button>
-							        		</div>
-							        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
-							        			<button type="button" class="btn btn-primary btn-block btn-outline mb5">
-								        			<i class="ico-bubble-blocked"></i>
-								        			<div>Falta</div>
-							        			</button>
-							        		</div>
-							        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
-							        			<button type="button" class="btn btn-primary btn-block btn-outline mb5">
-								        			<i class="ico-watch"></i>
-								        			<div>Minuto</div>
-							        			</button>
-							        		</div>
-							        	</div>
-							        	
-							        	 <div class="row pb15 pt15" style="border-bottom:1px solid #EBEBEB;" >
-							        	 	<div class="col-xs-12 text-center"> 
-							        	 		<button class="btn btn-success btn-block"  value="button" ng-click="startCount()">Iniciar Reloj</button>
-							        	 	</div>
-							        	 </div>
-							        	 
-							        	
-							        	
-						        	</div>
+				<div ng-show="match.state=='PENDING'" >
+					<div class="row pb15" style="border-bottom:1px solid #EBEBEB;" >
+		        	 	<div class="col-xs-6 col-md-4 text-center fsize24">
+		        	 		<i class=" ico-seven-segment{{scoreText.local.d1}}" ></i>
+		        	 		<i class=" ico-seven-segment{{scoreText.local.d2}}" ></i>
+		        	 		<i class=" ico-seven-segment{{scoreText.local.d3}}" ></i> 
+		        	 	</div>
+		        	 	<div class="col-md-4 text-center hidden-xs hidden-sm">
+		        	 		<button type="button" class="btn btn-primary btn-block btn-outline mb5" ng-disabled="stateWatch=='play'"
+		        					ng-click="addCrew()">
+		        				<i class="ico-group"></i>
+		        				<div>Formación</div>
+		        			</button>
+		        	 	</div>
+		        	 	<div class="col-xs-6 col-md-4 text-center fsize24"> 
+		        	 		<i class=" ico-seven-segment{{scoreText.visitor.d1}}" ></i>
+		        	 		<i class=" ico-seven-segment{{scoreText.visitor.d2}}" ></i>
+		        	 		<i class=" ico-seven-segment{{scoreText.visitor.d3}}" ></i>
+		        	 	</div>
+		        	 </div>
+				
+		        	 <div class="row pb15 pt15 hidden-md hidden-lg" style="border-bottom:1px solid #EBEBEB;" >
+						<div class="col-md-4 col-xs-12 text-center "> 
+							<div class="widget panel">
+	                            <div class="panel-body"  ng-class="{'bgcolor-success':stateWatch=='play', 'bgcolor-warning':stateWatch=='pause', 'bgcolor-default':stateWatch=='stop' }" >
+	                                <ul class="list-unstyled mt15 mb15">
+	                                    <li class="text-center fsize24">
+	                                        <i class="ico-clock2"></i> {{timetext}}
+	                                    </li>
+	                                    <li class="text-center">
+	                                        <h5 class="semibold mb0">1er Cuarto</h5>
+	                                        <span>--</span>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                            <div class="panel-body">
+	                                <div class="btn-group" role="group">
+									  <button type="button" class="btn btn-default" ng-click="startCount()" ng-disabled="stateWatch=='play'">
+									  	<h5 class="nm"><i class="ico-play3"></i></h5>
+	                                  	<p class="nm">Iniciar</p>
+									  </button>
+									  <button type="button" class="btn btn-default" ng-click="pauseCount()" ng-disabled="stateWatch=='pause' || stateWatch=='stop'">
+									  	<h5 class="nm"><i class="ico-pause"></i></h5>
+		                                    <p class="nm">Pausar</p> 
+									  </button>
+									  <button type="button" class="btn btn-default" ng-click="stopCount()" ng-disabled="stateWatch=='stop'">
+									  	<h5 class="nm"><i class="ico-stop"></i></h5>
+                                          	<p class="nm">Detener</p>
+									  </button>
+									</div>
+	                            </div>
+	                        </div>
 						</div>
-						<div class="tab-pane np pt15 pb15 mh400" id="2quarter" >
+						<div class="col-md-8 ">
+							<div class="menu-match row pl10 pr10 pt10  pb15" style="border-bottom:1px solid #EBEBEB;">
+				        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
+				        			<button type="button" class="btn btn-primary btn-block btn-outline mb5"
+				        					ng-click="addCrew()">
+				        				<i class="ico-group"></i>
+				        				<div>Formación</div>
+				        			</button>
+				        		</div>
+				        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
+				        			<button type="button" class="btn btn-primary btn-block btn-outline mb5" ng-disabled="stateWatch=='stop' || stateWatch=='pause'"
+				        				 data-target="#modal-add-point" data-toggle="modal" >
+					        			<i class="ico-screenshot"></i>
+					        			<div>Punto</div>
+				        			</button>
+				        		</div>
+				        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
+				        			<button type="button" class="btn btn-primary btn-block btn-outline mb5" ng-disabled="stateWatch=='stop' || stateWatch=='pause'">
+					        			<i class="ico-bubble-blocked"></i>
+					        			<div>Falta</div>
+				        			</button>
+				        		</div>
+				        		<div class="item-menu col-xs-6 col-sm-3 col-md-3 mb10 mt10">
+				        			<button type="button" class="btn btn-primary btn-block btn-outline mb5" ng-disabled="stateWatch=='stop' || stateWatch=='pause'">
+					        			<i class="ico-watch"></i>
+					        			<div>Minuto</div>
+				        			</button>
+				        		</div>
+				        	</div>
 						</div>
-						<div class="tab-pane np pt15 pb15 mh400" id="3quarter" >
-						</div>
-						<div class="tab-pane np pt15 pb15 mh400" id="4quarter" >
-						</div>
-					</div>	
+		        	</div>
+		        	
+		        	<div class="row">
+		        		<div class="col-md-6 col-sm-6">
+		        			<div class="pa15">
+			        			<a class="list-group-item " ng-repeat="player in match.local.players " href="javascript:void(0)" ng-click="optionPlayer(player, 'local' )" ng-show="player.titular">
+									<span class="pull-left avatar mr10">
+										<span class="badge badge-number-player">{{player.number}}</span>
+						            </span>
+						            <div class="clearfix" >
+										<strong>{{player.name}} {{player.lastName}}</strong>
+										<div>{{msgI18n(player.position)}}</div>
+						            </div>
+								</a>
+							</div>
+		        		</div>
+		        		<div class="col-md-6 col-sm-6">
+		        			<div class="pa15">
+			        			<a class="list-group-item " ng-repeat="player in match.visitor.players " href="javascript:void(0)" ng-click="optionPlayer(player,'visitor')" ng-show="player.titular">
+									<span class="pull-left avatar mr10">
+										<span class="badge badge-number-player">{{player.number}}</span>
+						            </span>
+						            <div class="clearfix" >
+										<strong>{{player.name}} {{player.lastName}}</strong>
+										<div>{{msgI18n(player.position)}}</div>
+						            </div>
+								</a>
+							</div>
+		        		</div>
+		        	</div>
+	        	</div>
 			</div>
-			
-	        
-	        	
-	        	
         </div>
 	</div>
 </section>
@@ -115,61 +179,49 @@
 
 
 
-<div id="modal-add-point" class="modal fade" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3 class="semibold modal-title">Nuevo Punto</h3>
-            </div>
-            <div class="modal-body">
+
+<!-- <div id="modal-add-point" class="modal fade" aria-hidden="true" style="display: none;"> -->
+<!--     <div class="modal-dialog"> -->
+<!--         <div class="modal-content"> -->
+<!--             <div class="modal-header text-center"> -->
+<!--                 <button type="button" class="close" data-dismiss="modal">×</button> -->
+<!--                 <h3 class="semibold modal-title">Nuevo Punto</h3> -->
+<!--             </div> -->
+<!--             <div class="modal-body"> -->
             
             
-            		<div class="row" style="padding:10px;">
-            			<div class="btn-group btn-group-justified">
-            				<div class="btn btn-teal team-point" ng-model="point.team" uib-btn-radio="'local'">
-			    				<div class="locale">Local</div>
-			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" 
-	                       	 alt="Cover" class="unveiled img-rounded">
-	                       	 <div class="name">{{match.local.name}}</div>
-                       	 </div>
+<!--             		<div class="row" style="padding:10px;"> -->
+<!--             			<div class="btn-group btn-group-justified"> -->
+<!--             				<div class="btn btn-teal team-point" ng-model="point.team" uib-btn-radio="'local'"> -->
+<!-- 			    				<div class="locale">Local</div> -->
+<!-- 			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png"  -->
+<!-- 	                       	 alt="Cover" class="unveiled img-rounded"> -->
+<!-- 	                       	 <div class="name">{{match.local.name}}</div> -->
+<!--                        	 </div> -->
                        	 
-                       	 <div class="btn btn-teal team-point" ng-model="point.team" uib-btn-radio="'visitor'">
-			    				<div class="locale" >Visita</div>
-			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png" 
-	                       	 alt="Cover" class="unveiled img-rounded" >
-	                       	 <div class="name">{{match.visitor.name}}</div>
-                       	 </div>
-            			</div>
-            		</div>
-            		<div class="row pt15" style="border-top:1px solid #ebebeb;padding:10px;" >
-            			<div class="btn-group btn-group-justified">
-            				<div uib-btn-radio="1" ng-model="point.score" type="button" class="btn btn-lg btn-warning mb5">1pt</div>
-	            			<div uib-btn-radio="2" ng-model="point.score" type="button" class="btn btn-lg btn-warning mb5" >2pt</div>
-            				<div uib-btn-radio="3" ng-model="point.score" type="button" class="btn btn-lg btn-warning mb5" >3pt</div>
-            			</div>
-            		</div>
-            </div>
-            <div class="modal-footer">
-            		<button type="button" 
-            		class="btn btn-success btn-lg btn-block" 
-            		ng-click="addPoint()"
-            		ng-disabled="!(point.score!=0 && point.team!='')"
-            		>Agregar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-        <!-- 
-<script>
-$.stellar({horizontalScrolling: false});
-</script>
- -->
+<!--                        	 <div class="btn btn-teal team-point" ng-model="point.team" uib-btn-radio="'visitor'"> -->
+<!-- 			    				<div class="locale" >Visita</div> -->
+<!-- 			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png"  -->
+<!-- 	                       	 alt="Cover" class="unveiled img-rounded" > -->
+<!-- 	                       	 <div class="name">{{match.visitor.name}}</div> -->
+<!--                        	 </div> -->
+<!--             			</div> -->
+<!--             		</div> -->
+<!--             		<div class="row pt15" style="border-top:1px solid #ebebeb;padding:10px;" > -->
+<!--             			<div class="btn-group btn-group-justified"> -->
+<!--             				<div uib-btn-radio="1" ng-model="point.score" type="button" class="btn btn-lg btn-warning mb5">1pt</div> -->
+<!-- 	            			<div uib-btn-radio="2" ng-model="point.score" type="button" class="btn btn-lg btn-warning mb5" >2pt</div> -->
+<!--             				<div uib-btn-radio="3" ng-model="point.score" type="button" class="btn btn-lg btn-warning mb5" >3pt</div> -->
+<!--             			</div> -->
+<!--             		</div> -->
+<!--             </div> -->
+<!--             <div class="modal-footer"> -->
+<!--             		<button type="button"  -->
+<!--             		class="btn btn-success btn-lg btn-block"  -->
+<!--             		ng-click="addPoint()" -->
+<!--             		ng-disabled="!(point.score!=0 && point.team!='')" -->
+<!--             		>Agregar</button> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+<!-- </div> -->

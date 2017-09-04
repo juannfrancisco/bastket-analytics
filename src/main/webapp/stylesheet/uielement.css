@@ -1967,6 +1967,28 @@ fieldset[disabled] .btn-twitter.active {
     min-width: 36px;
 }
 
+
+.badge-number-player{
+    background-color: #6bccb4;
+    border-radius: 0px;
+    font-size: 15px;
+    padding: 10px;
+    line-height: 15px;
+    height: 36px;
+    min-width: 36px;
+}
+
+.badge-titular{
+    background-color: #ffd66a;
+    border-radius: 0px;
+    font-size: 15px;
+    padding: 10px;
+    line-height: 15px;
+    height: 36px;
+    min-width: 36px;
+}
+
+
 /* ----------------------------
 *
 * Icons
@@ -15171,13 +15193,11 @@ hr {
 	.uib-datepicker{width:100%;} 
 	.uib-daypicker{width:100%;}
 	.uib-monthpicker{width: 100%;}
-	
 	.match-profile-header{margin:auto;}
-	.match-profile-header > .team > .locale{ font-weight:bold; margin:10px;font-size:16px;color:gray; }
 	.match-profile-header > .team > img{ width:100px; }
-	.match-profile-header > .team > .name{ font-weight:bold; margin:10px; font-size:16px; }
 }
-
+.match-profile-header > .team > .locale{ font-weight:bold; margin:10px;font-size:16px;color:gray; }
+.match-profile-header > .team > .name{ font-weight:bold; margin:10px; font-size:16px; }
 
 .team-point{ padding:15px; min-height:230px; padding-top:0px;}
 .team-point > .locale{ font-weight:bold; margin:10px;font-size:14px;color:gray; }
