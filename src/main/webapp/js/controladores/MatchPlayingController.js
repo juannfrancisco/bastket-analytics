@@ -6,11 +6,12 @@ app.controller("MatchPlayingController", ['$scope', '$http', '$routeParams', '$i
 function($scope, $http, $routeParams, $interval,$uibModal)
 {
 	$scope.flagLoading = true;
-	$scope.time = 600;
+	$scope.time = 300;
 	$scope.timetext = "00:00:00";
 	$scope.score = { visitor:0, local:0 };
 	$scope.scoreText = { visitor:{d1:0, d2:0, d3:0}, local:{ d1:0, d2:0, d3:0 } };
 	$scope.point = {team:'', score:0};
+	$scope.quarter = [];
 
 	/**
 	 *
@@ -27,6 +28,8 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 		{
 			$scope.match = response;
 			$scope.match.date = new Date( $scope.match.date );
+			$scope.match.visitor.formacion = false;
+			$scope.match.local.formacion = false;
 			$scope.flagLoading = false;
 			NProgress.done();
 		} );
@@ -37,22 +40,6 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 		});
 	};
 	$scope.loadData();
-
-
-
-
-//	$scope.addPoint = function(){
-//		$scope.score.visitor = $scope.point.team === 'visitor' ? $scope.score.visitor+ $scope.point.score: $scope.score.visitor;
-//		$scope.score.local = $scope.point.team === 'local' ? $scope.score.local+ $scope.point.score: $scope.score.local;
-//
-//		$scope.calculateDigit($scope.score.local, $scope.scoreText.local);
-//		$scope.calculateDigit($scope.score.visitor, $scope.scoreText.visitor);
-//
-//		$scope.point.team = '';
-//		$scope.point.score = 0;
-//		$('#modal-add-point').modal('hide');
-//	};
-
 
 	$scope.calculateDigit = function( score , scoreText ){
 		var digits = [];
@@ -73,7 +60,11 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 	var stop;
 	$scope.stateWatch = "stop"
 	
+	/**
+	 * 
+	 */
 	$scope.startCount = function(){
+		$scope.quarter.push( {name: ($scope.quarter.length + 1 ) + "quarter",points:[]} );
 		if ( angular.isDefined(stop) ) return;
 		$scope.stateWatch = "play"
 		stop = $interval(function() {
@@ -84,12 +75,14 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 				var seconds = $scope.time % 60;
 				$scope.timetext = (hour <10 ? "0"+hour:hour) + ":" + (min <10 ? "0"+ min: min) + ":"+ (seconds<10 ? "0"+seconds: seconds);
 			} else {
-				$scope.pauseCount();
+				//$scope.pauseCount();
 			}
         }, 1000);
 	};
 
-
+	/**
+	 * 
+	 */
 	$scope.pauseCount = function(){
 		if (angular.isDefined(stop)) {
             $interval.cancel(stop);
@@ -98,8 +91,12 @@ function($scope, $http, $routeParams, $interval,$uibModal)
           }
 	};
 	
+	/**
+	 * 
+	 */
 	$scope.stopCount = function(){
 		
+		alert( "Desea terminar el partido ? " );
 		if (angular.isDefined(stop)) {
             $interval.cancel(stop);
             stop = undefined;
@@ -113,7 +110,7 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 	/**
 	 * 
 	 */
-	$scope.addCrew = function(){
+	$scope.addCrew = function(type){
 		var modalInstance = $uibModal.open({
             animation: true,
             backdrop : false,
@@ -128,7 +125,7 @@ function($scope, $http, $routeParams, $interval,$uibModal)
         });
 		
 		modalInstance.result.then(function (selectedItem) {
-			
+			$scope.match[type].formacion = true;
 	    }, function () {
 	      console.log("xxssss");
 	    });
@@ -158,13 +155,41 @@ function($scope, $http, $routeParams, $interval,$uibModal)
 		modalInstance.result.then(function (scoreNew) {
 			$scope.score[type] = $scope.score[type]+ scoreNew; 
 			$scope.calculateDigit($scope.score[type], $scope.scoreText[type] );
+			
+			
+			player.totalPoints = player.totalPoints + scoreNew;
+			player.points = player.points ? player.points : []; 
+			player.points.push( { date: new Date(), point:scoreNew, quarter:$scope.quarter.length-1 } );
+			$scope.quarter[$scope.quarter.length-1].points.push( { date: new Date(), point:scoreNew, player:player } );
+			
 	    }, function () {
 	      console.log("xxssss");
 	    });
 	};
-
-
-
+	
+	/**
+	 * 
+	 */
+	$scope.logQuarter = function(type){
+		var modalInstance = $uibModal.open({
+            animation: true,
+            backdrop : false,
+            templateUrl: 'pages/matches/modal-log-quarter.html',
+            controller: 'ModalLogQuarter',
+            size :'lg',
+            resolve: {
+                quarter: function () {
+                  return $scope.quarter[$scope.quarter.length-1];
+                }
+              }
+        });
+		modalInstance.result.then(function (selectedItem) {
+			
+	    }, function () {
+	      
+	    });
+	};
+	
 }]);
 
 
@@ -258,10 +283,6 @@ function($scope,$uibModalInstance, player, score )
 	 */
 	$scope.addPoint = function(point){
 		$uibModalInstance.close( point );
-		player.totalPoints = player.totalPoints + point;
-		player.points = player.points ? player.points : []; 
-		player.points.push( { date: new Date(), point:point } );
-		console.log( player.points );
 	}
 	
 	/**

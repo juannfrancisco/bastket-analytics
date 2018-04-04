@@ -19,8 +19,6 @@ package cl.magnolabs.basket.dao.administration;
 import java.util.List;
 
 import cl.magnolabs.basket.core.administration.User;
-import cl.magnolabs.basket.core.championship.Championship;
-import cl.magnolabs.basket.services.DataSingleton;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com

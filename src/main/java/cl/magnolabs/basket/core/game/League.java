@@ -16,7 +16,6 @@
  */
 package cl.magnolabs.basket.core.game;
 
-import java.util.List;
 
 /**
  * @author Juan Francisco Maldonado León - juan.maldonado.leon@gmail.com
@@ -26,6 +25,20 @@ import java.util.List;
 public class League {
 	
 	private String name;
-	private List<Match> games;
+//	private List<Match> games;
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 }

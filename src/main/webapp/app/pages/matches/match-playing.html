@@ -19,14 +19,18 @@
 		                                        <i class="ico-clock2"></i> {{timetext}}
 		                                    </li>
 		                                    <li class="text-center">
-		                                        <h5 class="semibold mb0">1er Cuarto</h5>
+		                                        <h5 class="semibold mb0">{{quarter.length}}er Cuarto</h5>
 		                                        <span>--</span>
 		                                    </li>
 		                                </ul>
 		                            </div>
 		                            <div class="panel-body">
 		                            	<div class="btn-group" role="group">
-										  <button type="button" class="btn btn-default" ng-click="startCount()" ng-disabled="stateWatch=='play'">
+		                            	  <button type="button" class="btn btn-default" ng-click="logQuarter()">
+										  	<h5 class="nm"><i class="ico-list"></i></h5>
+		                                  	<p class="nm">log</p>
+										  </button>
+										  <button type="button" class="btn btn-success" ng-click="startCount()" ng-disabled="stateWatch=='play' || (!match.visitor.formacion && !match.local.formacion)">
 										  	<h5 class="nm"><i class="ico-play3"></i></h5>
 		                                  	<p class="nm">Iniciar</p>
 										  </button>
@@ -60,11 +64,7 @@
 		        	 		<i class=" ico-seven-segment{{scoreText.local.d3}}" ></i> 
 		        	 	</div>
 		        	 	<div class="col-md-4 text-center hidden-xs hidden-sm">
-		        	 		<button type="button" class="btn btn-primary btn-block btn-outline mb5" ng-disabled="stateWatch=='play'"
-		        					ng-click="addCrew()">
-		        				<i class="ico-group"></i>
-		        				<div>Formación</div>
-		        			</button>
+		        	 	
 		        	 	</div>
 		        	 	<div class="col-xs-6 col-md-4 text-center fsize24"> 
 		        	 		<i class=" ico-seven-segment{{scoreText.visitor.d1}}" ></i>
@@ -139,7 +139,16 @@
 		        	
 		        	<div class="row">
 		        		<div class="col-md-6 col-sm-6">
-		        			<div class="pa15">
+		        			<div class="list-group ma15" style="border:1px solid silver">
+			        			<div class="list-group-header">
+			        				<div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-success" ng-disabled="match.local.formacion" ng-click="addCrew('local')"><i class="ico-align-justify"></i> Formación</button>
+                                        <button type="button" class="btn btn-sm btn-default" ng-disabled="stateWatch!='play'"><i class="ico-watch"></i> Minuto</button>
+                                    </div>
+			        			</div>
+			        			<div class="alert alert-info mt20 ml10 mr10 text-center" ng-show="!match.local.formacion">
+									<span class="media-text ellipsis nm">No se han asignado jugadores a la formacion.</span>
+								</div>
 			        			<a class="list-group-item " ng-repeat="player in match.local.players " href="javascript:void(0)" ng-click="optionPlayer(player, 'local' )" ng-show="player.titular">
 									<span class="pull-left avatar mr10">
 										<span class="badge badge-number-player">{{player.number}}</span>
@@ -149,10 +158,19 @@
 										<div>{{msgI18n(player.position)}}</div>
 						            </div>
 								</a>
-							</div>
+		        			</div>
 		        		</div>
 		        		<div class="col-md-6 col-sm-6">
-		        			<div class="pa15">
+		        			<div class="list-group ma15" style="border:1px solid silver">
+		        				<div class="list-group-header">
+			        				<div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-success" ng-disabled="match.visitor.formacion" ng-click="addCrew('visitor')"> <i class="ico-align-justify"></i> Formación</button>
+                                        <button type="button" class="btn btn-sm btn-default" ng-disabled="stateWatch!='play'"> <i class="ico-watch"></i> Minuto</button>
+                                    </div>
+			        			</div>
+			        			<div class="alert alert-info mt20 ml10 mr10 text-center" ng-show="!match.visitor.formacion">
+									<span class="media-text ellipsis nm">No se han asignado jugadores a la formacion.</span>
+								</div>
 			        			<a class="list-group-item " ng-repeat="player in match.visitor.players " href="javascript:void(0)" ng-click="optionPlayer(player,'visitor')" ng-show="player.titular">
 									<span class="pull-left avatar mr10">
 										<span class="badge badge-number-player">{{player.number}}</span>
@@ -170,58 +188,3 @@
         </div>
 	</div>
 </section>
-
-
-
-
-
-
-
-
-
-
-<!-- <div id="modal-add-point" class="modal fade" aria-hidden="true" style="display: none;"> -->
-<!--     <div class="modal-dialog"> -->
-<!--         <div class="modal-content"> -->
-<!--             <div class="modal-header text-center"> -->
-<!--                 <button type="button" class="close" data-dismiss="modal">×</button> -->
-<!--                 <h3 class="semibold modal-title">Nuevo Punto</h3> -->
-<!--             </div> -->
-<!--             <div class="modal-body"> -->
-            
-            
-<!--             		<div class="row" style="padding:10px;"> -->
-<!--             			<div class="btn-group btn-group-justified"> -->
-<!--             				<div class="btn btn-teal team-point" ng-model="point.team" uib-btn-radio="'local'"> -->
-<!-- 			    				<div class="locale">Local</div> -->
-<!-- 			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png"  -->
-<!-- 	                       	 alt="Cover" class="unveiled img-rounded"> -->
-<!-- 	                       	 <div class="name">{{match.local.name}}</div> -->
-<!--                        	 </div> -->
-                       	 
-<!--                        	 <div class="btn btn-teal team-point" ng-model="point.team" uib-btn-radio="'visitor'"> -->
-<!-- 			    				<div class="locale" >Visita</div> -->
-<!-- 			    				<img data-toggle="unveil" ng-src="../image/icons/teams-default4.png"  -->
-<!-- 	                       	 alt="Cover" class="unveiled img-rounded" > -->
-<!-- 	                       	 <div class="name">{{match.visitor.name}}</div> -->
-<!--                        	 </div> -->
-<!--             			</div> -->
-<!--             		</div> -->
-<!--             		<div class="row pt15" style="border-top:1px solid #ebebeb;padding:10px;" > -->
-<!--             			<div class="btn-group btn-group-justified"> -->
-<!--             				<div uib-btn-radio="1" ng-model="point.score" type="button" class="btn btn-lg btn-warning mb5">1pt</div> -->
-<!-- 	            			<div uib-btn-radio="2" ng-model="point.score" type="button" class="btn btn-lg btn-warning mb5" >2pt</div> -->
-<!--             				<div uib-btn-radio="3" ng-model="point.score" type="button" class="btn btn-lg btn-warning mb5" >3pt</div> -->
-<!--             			</div> -->
-<!--             		</div> -->
-<!--             </div> -->
-<!--             <div class="modal-footer"> -->
-<!--             		<button type="button"  -->
-<!--             		class="btn btn-success btn-lg btn-block"  -->
-<!--             		ng-click="addPoint()" -->
-<!--             		ng-disabled="!(point.score!=0 && point.team!='')" -->
-<!--             		>Agregar</button> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--     </div> -->
-<!-- </div> -->

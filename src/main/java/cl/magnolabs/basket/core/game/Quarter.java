@@ -24,4 +24,18 @@ package cl.magnolabs.basket.core.game;
 public class Quarter {
 	
 	private int time;
+
+	/**
+	 * @return the time
+	 */
+	public int getTime() {
+		return time;
+	}
+
+	/**
+	 * @param time the time to set
+	 */
+	public void setTime(int time) {
+		this.time = time;
+	}
 }

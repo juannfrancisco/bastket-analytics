@@ -30,5 +30,91 @@ public class SkillsPlayer {
 	private int jump;
 	private int offense;
 	private int deffense;
+	/**
+	 * @return the dribbling
+	 */
+	public int getDribbling() {
+		return dribbling;
+	}
+	/**
+	 * @param dribbling the dribbling to set
+	 */
+	public void setDribbling(int dribbling) {
+		this.dribbling = dribbling;
+	}
+	/**
+	 * @return the shooting
+	 */
+	public int getShooting() {
+		return shooting;
+	}
+	/**
+	 * @param shooting the shooting to set
+	 */
+	public void setShooting(int shooting) {
+		this.shooting = shooting;
+	}
+	/**
+	 * @return the speed
+	 */
+	public int getSpeed() {
+		return speed;
+	}
+	/**
+	 * @param speed the speed to set
+	 */
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	/**
+	 * @return the passing
+	 */
+	public int getPassing() {
+		return passing;
+	}
+	/**
+	 * @param passing the passing to set
+	 */
+	public void setPassing(int passing) {
+		this.passing = passing;
+	}
+	/**
+	 * @return the jump
+	 */
+	public int getJump() {
+		return jump;
+	}
+	/**
+	 * @param jump the jump to set
+	 */
+	public void setJump(int jump) {
+		this.jump = jump;
+	}
+	/**
+	 * @return the offense
+	 */
+	public int getOffense() {
+		return offense;
+	}
+	/**
+	 * @param offense the offense to set
+	 */
+	public void setOffense(int offense) {
+		this.offense = offense;
+	}
+	/**
+	 * @return the deffense
+	 */
+	public int getDeffense() {
+		return deffense;
+	}
+	/**
+	 * @param deffense the deffense to set
+	 */
+	public void setDeffense(int deffense) {
+		this.deffense = deffense;
+	}
 
+	
+	
 }
